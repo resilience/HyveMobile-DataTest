@@ -1,16 +1,11 @@
 import re
 
-from bs4 import BeautifulSoup as soup
 from urllib.request import urlopen as uReq
-import facebook
 import requests
 import urllib, json
-import googlemaps
 import datetime
-from selenium import webdriver
 import tkinter as tk
 import tkinter.filedialog
-import csv
 import os
 import sys
 import time
