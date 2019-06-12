@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20192.19.0515.1630                               -->
+<workbook source-build='2019.2.0 (20192.19.0515.1630)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <SheetIdentifierTracking ignorable='true' predowngraded='true' />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='Subscribers (2)' inline='true' name='federated.1v33wv010txpmg17onvt40lb7hnb' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='Subscribers' name='textscan.0q6ls3y1uogowz1b4vrhv16a698k'>
+            <connection class='textscan' directory='C:/Users/dmare/Desktop/HyveMobile/Application Test/Data Test/Data Test/HyveMobile-DataTest/csv files' filename='Subscribers.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.0q6ls3y1uogowz1b4vrhv16a698k' name='Subscribers.csv' table='[Subscribers#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_ZA'>
+            <column datatype='string' name='#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur' ordinal='0' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Subscribers.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;R&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_ZA&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot; &quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur]</local-name>
+            <parent-name>[Subscribers.csv]</parent-name>
+            <remote-alias>#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Country' datatype='string' name='[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur - Split 10]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' user:SplitFieldIndex='10' user:SplitFieldOrigin='[federated.1v33wv010txpmg17onvt40lb7hnb].[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur]'>
+        <calculation class='tableau' formula='TRIM( SPLIT( [#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur], &quot;,&quot;, 10 ) )' />
+      </column>
+      <column caption='#' datatype='string' name='[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur - Split 1]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' user:SplitFieldIndex='1' user:SplitFieldOrigin='[federated.1v33wv010txpmg17onvt40lb7hnb].[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur]'>
+        <calculation class='tableau' formula='TRIM( SPLIT( [#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur], &quot;,&quot;, 1 ) )' />
+      </column>
+      <column caption='Transaction Date' datatype='string' name='[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur - Split 2]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' user:SplitFieldIndex='2' user:SplitFieldOrigin='[federated.1v33wv010txpmg17onvt40lb7hnb].[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur]'>
+        <calculation class='tableau' formula='TRIM( SPLIT( [#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur], &quot;,&quot;, 2 ) )' />
+      </column>
+      <column caption='Subscription Id' datatype='string' name='[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur - Split 3]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' user:SplitFieldIndex='3' user:SplitFieldOrigin='[federated.1v33wv010txpmg17onvt40lb7hnb].[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur]'>
+        <calculation class='tableau' formula='TRIM( SPLIT( [#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur], &quot;,&quot;, 3 ) )' />
+      </column>
+      <column caption='User Id' datatype='string' name='[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur - Split 4]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' user:SplitFieldIndex='4' user:SplitFieldOrigin='[federated.1v33wv010txpmg17onvt40lb7hnb].[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur]'>
+        <calculation class='tableau' formula='TRIM( SPLIT( [#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur], &quot;,&quot;, 4 ) )' />
+      </column>
+      <column caption='Subscription Start' datatype='string' name='[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur - Split 5]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' user:SplitFieldIndex='5' user:SplitFieldOrigin='[federated.1v33wv010txpmg17onvt40lb7hnb].[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur]'>
+        <calculation class='tableau' formula='TRIM( SPLIT( [#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur], &quot;,&quot;, 5 ) )' />
+      </column>
+      <column caption='Subscription End' datatype='string' name='[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur - Split 6]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' user:SplitFieldIndex='6' user:SplitFieldOrigin='[federated.1v33wv010txpmg17onvt40lb7hnb].[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur]'>
+        <calculation class='tableau' formula='TRIM( SPLIT( [#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur], &quot;,&quot;, 6 ) )' />
+      </column>
+      <column caption='Subcription Status' datatype='string' name='[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur - Split 7]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' user:SplitFieldIndex='7' user:SplitFieldOrigin='[federated.1v33wv010txpmg17onvt40lb7hnb].[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur]'>
+        <calculation class='tableau' formula='TRIM( SPLIT( [#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur], &quot;,&quot;, 7 ) )' />
+      </column>
+      <column caption='Provider' datatype='string' name='[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur - Split 8]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' user:SplitFieldIndex='8' user:SplitFieldOrigin='[federated.1v33wv010txpmg17onvt40lb7hnb].[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur]'>
+        <calculation class='tableau' formula='TRIM( SPLIT( [#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur], &quot;,&quot;, 8 ) )' />
+      </column>
+      <column caption='Service' datatype='string' name='[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur - Split 9]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' user:SplitFieldIndex='9' user:SplitFieldOrigin='[federated.1v33wv010txpmg17onvt40lb7hnb].[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur]'>
+        <calculation class='tableau' formula='TRIM( SPLIT( [#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur], &quot;,&quot;, 9 ) )' />
+      </column>
+      <column caption='#,Transaction Date,Subscription Id,User Id,Subscription Start,Subscription End,Subscription Status,Provider,Service,Country,Cur' datatype='string' name='[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <layout dim-ordering='alphabetic' dim-percentage='0.572519' measure-ordering='alphabetic' measure-percentage='0.427481' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;South Africa&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+    </datasource>
+    <datasource caption='Transactions (2)' inline='true' name='federated.1nehu1f12rmfu811eqyl71mig5iv' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='Transactions' name='textscan.0v90gst1rjnsq818gs4a21niobqf'>
+            <connection class='textscan' directory='C:/Users/dmare/Desktop/HyveMobile/Application Test/Data Test/Data Test/HyveMobile-DataTest/csv files' filename='Transactions.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.0v90gst1rjnsq818gs4a21niobqf' name='Transactions.csv' table='[Transactions#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_ZA'>
+            <column datatype='string' name='#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents' ordinal='0' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Transactions.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;R&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_ZA&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot; &quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents]</local-name>
+            <parent-name>[Transactions.csv]</parent-name>
+            <remote-alias>#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='#,Transaction Date,Subscription Id,User Id,Subscription Start,Subscription End,Subscription Status,Provider,Service,Country,Cur' datatype='string' hidden='true' name='[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column caption='#' datatype='string' name='[#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents - Split 1]' role='dimension' type='nominal' user:SplitFieldIndex='1' user:SplitFieldOrigin='[federated.1nehu1f12rmfu811eqyl71mig5iv].[#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents]'>
+        <calculation class='tableau' formula='TRIM( SPLIT( [#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents], &quot;,&quot;, 1 ) )' />
+      </column>
+      <column caption='Transaction Date' datatype='string' name='[#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents - Split 2]' role='dimension' type='nominal' user:SplitFieldIndex='2' user:SplitFieldOrigin='[federated.1nehu1f12rmfu811eqyl71mig5iv].[#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents]'>
+        <calculation class='tableau' formula='TRIM( SPLIT( [#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents], &quot;,&quot;, 2 ) )' />
+      </column>
+      <column caption='User Id' datatype='string' name='[#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents - Split 3]' role='dimension' type='nominal' user:SplitFieldIndex='3' user:SplitFieldOrigin='[federated.1nehu1f12rmfu811eqyl71mig5iv].[#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents]'>
+        <calculation class='tableau' formula='TRIM( SPLIT( [#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents], &quot;,&quot;, 3 ) )' />
+      </column>
+      <column caption='Subscription Id' datatype='string' name='[#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents - Split 4]' role='dimension' type='nominal' user:SplitFieldIndex='4' user:SplitFieldOrigin='[federated.1nehu1f12rmfu811eqyl71mig5iv].[#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents]'>
+        <calculation class='tableau' formula='TRIM( SPLIT( [#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents], &quot;,&quot;, 4 ) )' />
+      </column>
+      <column caption='Transaction Status' datatype='string' name='[#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents - Split 5]' role='dimension' type='nominal' user:SplitFieldIndex='5' user:SplitFieldOrigin='[federated.1nehu1f12rmfu811eqyl71mig5iv].[#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents]'>
+        <calculation class='tableau' formula='TRIM( SPLIT( [#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents], &quot;,&quot;, 5 ) )' />
+      </column>
+      <column caption='Charge in Cents' datatype='string' name='[#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents - Split 6]' role='dimension' type='nominal' user:SplitFieldIndex='6' user:SplitFieldOrigin='[federated.1nehu1f12rmfu811eqyl71mig5iv].[#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents]'>
+        <calculation class='tableau' formula='TRIM( SPLIT( [#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents], &quot;,&quot;, 6 ) )' />
+      </column>
+      <column caption='#,Transaction Date,User Id,Subscription Id,Transcationstatus,Chargeincents' datatype='string' hidden='true' name='[#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents]' role='dimension' type='nominal' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <extract count='-1' enabled='true' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_GB' class='hyper' dbname='C:/Users/dmare/Documents/My Tableau Repository/Datasources/Transactions (2).hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>#,transaction_date,user_id,subscription_id,transcationstatus,chargeincents</remote-alias>
+              <ordinal>0</ordinal>
+              <family>Transactions.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>1185883</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' dim-percentage='0.554476' measure-ordering='alphabetic' measure-percentage='0.445524' show-hidden-fields='true' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;South Africa&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Subscribers (2)' name='federated.1v33wv010txpmg17onvt40lb7hnb' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1v33wv010txpmg17onvt40lb7hnb'>
+            <column caption='Service' datatype='string' name='[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur - Split 9]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' user:SplitFieldIndex='9' user:SplitFieldOrigin='[federated.1v33wv010txpmg17onvt40lb7hnb].[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur]'>
+              <calculation class='tableau' formula='TRIM( SPLIT( [#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur], &quot;,&quot;, 9 ) )' />
+            </column>
+            <column caption='#,Transaction Date,Subscription Id,User Id,Subscription Start,Subscription End,Subscription Status,Provider,Service,Country,Cur' datatype='string' name='[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column-instance column='[#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur - Split 9]' derivation='None' name='[none:#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur - Split 9:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1v33wv010txpmg17onvt40lb7hnb].[none:#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur - Split 9:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{54270D53-6184-4DD4-BB66-A50FAF4D20D0}' />
+    </worksheet>
+  </worksheets>
+  <windows saved-dpi-scale-factor='1.25' source-height='63'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1v33wv010txpmg17onvt40lb7hnb].[none:#,transaction_date,subscription_id,user_id,subscription_start,subscription_end,subscription_status,provider,service,country,cur - Split 9:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{74C91596-2293-4A03-AA19-50095CFAE4FC}' />
+    </window>
+  </windows>
+</workbook>

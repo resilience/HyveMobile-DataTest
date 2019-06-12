@@ -1,6 +1,5 @@
-import re
-
 from urllib.request import urlopen as uReq
+import csv
 import requests
 import urllib, json
 import datetime
@@ -12,46 +11,32 @@ import time
 from unidecode import unidecode
 from urllib.request import FancyURLopener
 
-import pymysql.cursors
+import pymysql
 
-connection = pymysql.connect(host='192.168.5.134',
-                             user='root',
-                             password='1234',
-                             db='simplehr',
-                             charset='utf8mb4',
-                             cursorclass=pymysql.cursors.DictCursor)
+REGION = 'us-east-1'
 
-print("connect successful!!")
+rds_host = "hyvemobile.ccrl36s8ovge.us-east-2.rds.amazonaws.com"
+name = 'hyvemobile'
+password = 'hyvemobilepassword'
+db_name = 'hyvemobile'
 
-try:
+conn = pymysql.connect(rds_host, user=name, passwd=password, db=db_name, connect_timeout=5)
+cur = conn.cursor()
 
-    with connection.cursor() as cursor:
-
-        # SQL
-        sql = "SELECT Dept_No, Dept_Name FROM Department "
-
-        # Execute query.
-        cursor.execute(sql)
-
-        print("cursor.description: ", cursor.description)
-
-        print()
-
-        for row in cursor:
-            print(row)
-
-
-finally:
-    # Close connection.
-    connection.close()
-
+cur.execute("""CREATE TABLE IF NOT EXISTS locations (
+            pingId INT PRIMARY KEY AUTO_INCREMENT,
+            userId INT NOT NULL,
+            fulLAddress VARCHAR(255) NOT NULL,
+            city VARCHAR(255) NOT NULL,
+            province VARCHAR(255) NOT NULL,
+            country VARCHAR(255) NOT NULL)""")
 
 mz = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
 apple = ' AppleWebKit/537.36 (KHTML, like Gecko) '
 chrome = 'Chrome/66.0.3359.181 Safari/537.36'
 
 
-class MyOpener(FancyURLopener):version = mz+apple+chrome
+class MyOpener(FancyURLopener): version = mz + apple + chrome
 
 
 start = time.time()
@@ -86,11 +71,14 @@ storage = 'Address Storage' + str(thread)
 outputName = dt + 'GEOCODE OUTPUT HyveMobile thread ' + str(thread)
 
 #  ------------- Change init directory here -----------------------
-file_path = tk.filedialog.askopenfilename(initialdir='C:/Users/dmare/Desktop/HyveMobile/Application Test/Data Test/Data Test/HyveMobile-DataTest', title="Select file", filetypes=[("ALL Files", "*.*")])
+file_path = tk.filedialog.askopenfilename(
+    initialdir='C:/Users/dmare/Desktop/HyveMobile/Application Test/Data Test/Data Test/HyveMobile-DataTest',
+    title="Select file", filetypes=[("ALL Files", "*.*")])
 
 reader = csv.reader(sys.stdin)
 # -------------- Open csv file to parse ----------------
-with open(file_path, encoding='utf8', errors='surrogateescape') as input, open(storage + '.csv', 'w', encoding='utf8') as output:
+with open(file_path, encoding='utf8', errors='surrogateescape') as input, open(storage + '.csv', 'w',
+                                                                               encoding='utf8') as output:
     non_blank = (line for line in input if line.strip())
     output.writelines(non_blank)
 
@@ -99,19 +87,20 @@ with open(storage + '.csv', encoding='utf8') as f1:
     row_count = sum(1 for row in f1)
     print(row_count, ' rows')
 
-# -------------- start ----------------------------
+# -------------- start running through excel csv file ----------------------------
 with open(storage + '.csv', encoding='utf8') as f:
     for line in f:
         counter = counter + 1
         i = i + 1
         line.encode('ascii', 'ignore').decode('ascii')
-#------------------GOOGLE API RUN -------------------------#
+        # ------------------ GOOGLE API RUN -------------------------#
         # track time taken
         enddline = time.time()
         startline = time.time()
 
         # validate search parameters for raw data
-        validSearchName = line.translate({ord(c): "" for c in "ï»;^*()[]{};:/<>?\|~½“¯†®©¤;›½®¶´¢”¿¨¤§¥¼;…‹—–ºª¿€™ ¡œ¦«¶æ#$%"})
+        validSearchName = line.translate(
+            {ord(c): "" for c in "ï»;^*()[]{};:/<>?\|~½“¯†®©¤;›½®¶´¢”¿¨¤§¥¼;…‹—–ºª¿€™ ¡œ¦«¶æ#$%"})
         searchName = validSearchName.replace('|', '+')
 
         # List of known offenders of unicode problems
@@ -119,15 +108,16 @@ with open(storage + '.csv', encoding='utf8') as f:
         searchName = searchName.replace('\ufeff', '')
         searchName = searchName.replace('\xa0hion\n', '')
         searchName = searchName.replace('\udca0', '')
-        searchName = searchName.replace("'","")
+        searchName = searchName.replace("'", "")
         searchName = unidecode(searchName)
 
-        # retrieve user id - referred to as code from here on out
+        # retrieve user id - referred to as 'code'
+        # searchName is the full text blob that is being split into GPS points & user id
 
         sep = ','
         # splits the user id from the line
-        code = searchName.split(sep, 1)[0]
-        print('code:', code)
+        userId = searchName.split(sep, 1)[0]
+        print('code:', userId)
         # retrieves the gps points
         gps = searchName.split(sep, 1)[1]
         # retrieves the original Lat and prepares it for URL addition
@@ -138,11 +128,12 @@ with open(storage + '.csv', encoding='utf8') as f:
         print('lat:', oLat)
         print('long:', oLng)
 
-        searchName = "latlng="+str(oLat)+','+str(oLng)
-        txtsearch = '# try find the place '
+        # overwriting searchName to just be Lat & Long, with google API friendly fluff to work within Geocode params
+
+        searchName = "latlng=" + str(oLat) + ',' + str(oLng)
+        txtsearch = 'https://maps.googleapis.com/maps/api/geocode/json?'
 
         print('searchName: ', searchName)
-
 
         # -------- Build text search url -----------
 
@@ -210,20 +201,29 @@ with open(storage + '.csv', encoding='utf8') as f:
         # print(placeTextSearch)
         try:
 
-            #--------------------------- retrieve output  -----------------------------
-
+            # --------------------------- retrieve output  -----------------------------
+            print('test')
             formatted_address = infot["results"][0].get("formatted_address")
-            city = infot["results"]["address_components"][4]
-            province = infot["results"]["address_components"][6]
-            country = infot["results"]["address_components"][7]
-
-            results
+            city = infot["results"][0]["address_components"][3].get("long_name")
+            province = infot["results"][0]["address_components"][5].get("long_name")
+            country = infot["results"][0]["address_components"][6].get("long_name")
+            print('test 2')
             statust = infot.get('status')
             with open(outputName + '.csv', 'a', newline='', encoding='utf8') as g:
                 thewriter = csv.writer(g, delimiter='|')
+                values = (userId, formatted_address, city, province, country)
+                print(values)
+                # ------- Add to excel file ----------
 
-                thewriter.writerow([code, formatted_address, city, province, country])
-                print(code, " :   --> ", formatted_address)
+                thewriter.writerow([values])
+
+                # ------- Add to AWS MySQL RDS -----------
+                insertSql = """insert into locations ( userId, fullAddress, city, province, country) values (%s, %s, %s, %s, %s)"""
+
+                cur.execute(insertSql, values)
+                conn.commit()
+
+                print(userId, " :   --> ", formatted_address)
         except IndexError as indexError:
 
             iIE = iIE + 1
@@ -234,13 +234,13 @@ with open(storage + '.csv', encoding='utf8') as f:
                 with open(outputName + '.csv', 'a', newline='', encoding='utf8') as g:
                     thewriter = csv.writer(g, delimiter='|')
 
-                    thewriter.writerow([code,'index error'])
+                    thewriter.writerow([userId, 'index error'])
             except NameError:
                 print('NO RESULTS FOUND')
                 with open(outputName + '.csv', 'a', newline='', encoding='utf8') as g:
                     thewriter = csv.writer(g, delimiter='|')
 
-                    thewriter.writerow([code, 'no result found'])
+                    thewriter.writerow([userId, 'no result found'])
                     endline = time.time()
                     timeTaken = endline - startline
 
@@ -248,7 +248,7 @@ with open(storage + '.csv', encoding='utf8') as f:
                     avgTime = timeSum / counter
                     print('this loop took : ', timeTaken, ' seconds')
                     print('On Average loops are taking : ', timeSum / counter, ' seconds')
-                    print('Estimated time remaining: ',  (row_count - counter) * avgTime / 3600, ' hours')
+                    print('Estimated time remaining: ', (row_count - counter) * avgTime / 3600, ' hours')
 
                 continue
                 endline = time.time()
@@ -272,9 +272,41 @@ with open(storage + '.csv', encoding='utf8') as f:
 
         except UnicodeError as unicodeError:
             iUE = iUE + 1
-            print("UnicodeError on",searchName,",", iUE, "Infot assigning errors, currently at line", i)
+            print("UnicodeError on", searchName, ",", iUE, "Infot assigning errors, currently at line", i)
             print('UNICODE ERROR', unicodeError)
+        except NameError:
+            print('Results out of bounds - Most likely has less than 7 address components')
 
+            with open(outputName + '.csv', 'a', newline='', encoding='utf8') as g:
+                thewriter = csv.writer(g, delimiter='|')
+
+                city = infot["results"][0]["address_components"][0].get("long_name")
+                province = infot["results"][0]["address_components"][2].get("long_name")
+                country = infot["results"][0]["address_components"][3].get("long_name")
+
+
+                values = (userId, formatted_address, city, province, country)
+                print(values)
+                # ------- Add to excel file ----------
+
+                thewriter.writerow([values])
+
+                # ------- Add to AWS MySQL RDS -----------
+                insertSql = """insert into locations ( userId, fullAddress) values (%s, %s)"""
+
+                cur.execute(insertSql, values)
+                conn.commit()
+
+                print(userId, " :   --> ", formatted_address)
+
+                endline = time.time()
+                timeTaken = endline - startline
+
+                timeSum = timeSum + timeTaken
+                avgTime = timeSum / counter
+                print('this loop took : ', timeTaken, ' seconds')
+                print('On Average loops are taking : ', timeSum / counter, ' seconds')
+                print('Estimated time remaining: ', (row_count - counter) * avgTime / 3600, ' hours')
         endline = time.time()
         timeTaken = endline - startline
 
@@ -284,7 +316,7 @@ with open(storage + '.csv', encoding='utf8') as f:
         print('On Average loops are taking : ', timeSum / counter, ' seconds')
         print('Estimated time remaining: ', (row_count - counter) * avgTime / 3600, ' hours')
 end = time.time()
-print('TOTAL ERRORS:', iIE+iTE+iUEE+iUE)
+print('TOTAL ERRORS:', iIE + iTE + iUEE + iUE)
 print('Index Errors: ', iIE)
 print('TypeErrors: ', iTE)
 print('UnicodeEncodeErrors: ', iUEE)
