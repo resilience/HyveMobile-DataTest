@@ -17,6 +17,8 @@ import time
 from unidecode import unidecode
 from urllib.request import FancyURLopener
 
+
+
 mz = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
 apple = ' AppleWebKit/537.36 (KHTML, like Gecko) '
 chrome = 'Chrome/66.0.3359.181 Safari/537.36'
@@ -30,6 +32,9 @@ myopener = MyOpener()
 dt = str(datetime.datetime.today().strftime("-%B %d %Y "))
 #  assigns key
 googleKey = '&key=AIzaSyAaLTZYcL5GihQayCSTsOpm2rfBrZqqNA0'
+
+# ---------------         Initializing all variables
+
 i = 0
 iIE = 0
 iUE = 0
@@ -45,51 +50,77 @@ row_count = 0
 avgTime = 0
 endline = 0
 startline = 0
-# GLOBAL AUTO LOADER
 
 root = tk.Tk()
 root.withdraw()
+# ------------- thread number gets hardcoded in this test instance
 thread = 1
 storage = 'Address Storage' + str(thread)
-outputName = dt + 'GEOCODE OUTPUT June week 4 THREAD' + str(thread)
+outputName = dt + 'GEOCODE OUTPUT HyveMobile thread' + str(thread)
 
-
+#  ------------- Change init directory here -----------------------
 file_path = tk.filedialog.askopenfilename(initialdir='C:/Users/dmare/Desktop/HyveMobile/Application Test/Data Test/Data Test/HyveMobile-DataTest', title="Select file", filetypes=[("ALL Files", "*.*")])
 
 reader = csv.reader(sys.stdin)
+# -------------- Open csv file to parse ----------------
 with open(file_path, encoding='utf8', errors='surrogateescape') as input, open(storage + '.csv', 'w', encoding='utf8') as output:
     non_blank = (line for line in input if line.strip())
     output.writelines(non_blank)
+
+# -------------- count rows  -----------------------
 with open(storage + '.csv', encoding='utf8') as f1:
     row_count = sum(1 for row in f1)
     print(row_count, ' rows')
+
+# -------------- start ----------------------------
 with open(storage + '.csv', encoding='utf8') as f:
     for line in f:
         counter = counter + 1
         i = i + 1
         line.encode('ascii', 'ignore').decode('ascii')
 #------------------GOOGLE API RUN -------------------------#
-        enddline =time.time()
-        startline =time.time()
+        # track time taken
+        enddline = time.time()
+        startline = time.time()
+
+        # validate search parameters for raw data
         validSearchName = line.translate({ord(c): "" for c in "ï»;^*()[]{};:/<>?\|~½“¯†®©¤;›½®¶´¢”¿¨¤§¥¼;…‹—–ºª¿€™ ¡œ¦«¶æ#$%"})
         searchName = validSearchName.replace('|', '+')
+
+        # List of known offenders of unicode problems
         searchName = searchName.replace(' ', '+')
         searchName = searchName.replace('\ufeff', '')
         searchName = searchName.replace('\xa0hion\n', '')
         searchName = searchName.replace('\udca0', '')
         searchName = searchName.replace("'","")
         searchName = unidecode(searchName)
-        code = searchName[:12]
 
+        # retrieve user id - referred to as code from here on out
+
+        sep = ','
+        # splits the user id from the line
+        code = searchName.split(sep, 1)[0]
         print('code:', code)
+        # retrieves the gps points
+        gps = searchName.split(sep, 1)[1]
+        # retrieves the original Lat and prepares it for URL addition
+        oLat = float(gps.split(',', 1)[0])
+        # retrieves the original Long and prepares it for URL addition
+        oLng = float(gps.split(',', 1)[1])
+        print('gps:', gps)
+        print('lat:', oLat)
+        print('long:', oLng)
 
-        searchName = searchName[12:]
-        print('searchName:', searchName)
-
+        searchName = "latlng="+str(oLat)+','+str(oLng)
         txtsearch = 'https://maps.googleapis.com/maps/api/geocode/json?'
 
         print('searchName: ', searchName)
-        original = searchName.replace('"', '')
+
+
+        # -------- Build text search url -----------
+
+
+
         try:
             this = txtsearch + searchName.strip() + googleKey
             print(this.strip())
