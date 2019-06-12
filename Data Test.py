@@ -17,6 +17,38 @@ import time
 from unidecode import unidecode
 from urllib.request import FancyURLopener
 
+import pymysql.cursors
+
+connection = pymysql.connect(host='192.168.5.134',
+                             user='root',
+                             password='1234',
+                             db='simplehr',
+                             charset='utf8mb4',
+                             cursorclass=pymysql.cursors.DictCursor)
+
+print("connect successful!!")
+
+try:
+
+    with connection.cursor() as cursor:
+
+        # SQL
+        sql = "SELECT Dept_No, Dept_Name FROM Department "
+
+        # Execute query.
+        cursor.execute(sql)
+
+        print("cursor.description: ", cursor.description)
+
+        print()
+
+        for row in cursor:
+            print(row)
+
+
+finally:
+    # Close connection.
+    connection.close()
 
 
 mz = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
@@ -56,7 +88,7 @@ root.withdraw()
 # ------------- thread number gets hardcoded in this test instance
 thread = 1
 storage = 'Address Storage' + str(thread)
-outputName = dt + 'GEOCODE OUTPUT HyveMobile thread' + str(thread)
+outputName = dt + 'GEOCODE OUTPUT HyveMobile thread ' + str(thread)
 
 #  ------------- Change init directory here -----------------------
 file_path = tk.filedialog.askopenfilename(initialdir='C:/Users/dmare/Desktop/HyveMobile/Application Test/Data Test/Data Test/HyveMobile-DataTest', title="Select file", filetypes=[("ALL Files", "*.*")])
@@ -112,20 +144,21 @@ with open(storage + '.csv', encoding='utf8') as f:
         print('long:', oLng)
 
         searchName = "latlng="+str(oLat)+','+str(oLng)
-        txtsearch = 'https://maps.googleapis.com/maps/api/geocode/json?'
+        txtsearch = '# try find the place '
 
         print('searchName: ', searchName)
 
 
         # -------- Build text search url -----------
 
-
-
+        # try find the place
         try:
             this = txtsearch + searchName.strip() + googleKey
             print(this.strip())
             placeTextSearch = myopener.open(this.strip()).read()
 
+
+        # handle unexpected errors
 
         except IndexError as indexError:
             print(iIE, " Text Search IndexError's, currently at line", i)
@@ -181,12 +214,20 @@ with open(storage + '.csv', encoding='utf8') as f:
         # print(infot.keys())
         # print(placeTextSearch)
         try:
+
+            #--------------------------- retrieve output  -----------------------------
+
             formatted_address = infot["results"][0].get("formatted_address")
+            city = infot["results"]["address_components"][4]
+            province = infot["results"]["address_components"][6]
+            country = infot["results"]["address_components"][7]
+
+            results
             statust = infot.get('status')
             with open(outputName + '.csv', 'a', newline='', encoding='utf8') as g:
                 thewriter = csv.writer(g, delimiter='|')
 
-                thewriter.writerow([code, formatted_address])
+                thewriter.writerow([code, formatted_address, city, province, country])
                 print(code, " :   --> ", formatted_address)
         except IndexError as indexError:
 
@@ -254,3 +295,4 @@ print('TypeErrors: ', iTE)
 print('UnicodeEncodeErrors: ', iUEE)
 print('UnicodeErros: ', iUE)
 print('TOTAL TIME TAKEN: ', (end - start) / 3600, ' hours, for ', i, 'lines')
+
