@@ -13,6 +13,19 @@ from urllib.request import FancyURLopener
 
 import pymysql
 
+
+# ----------- This application takes in userId, Lat, Long from an excel file or .csv
+# ----------- These fields are these used as parameters in a Google API called Geocode
+# ----------- Geocode returns JSON data that we subsequently store locally in excel, and in AWS RDS MySQL db
+
+# ----------- What still needs to happen:
+# ----------- 1. The current way of handling errors, and executing time estimates is verbose - needs to be refactored
+# ----------- 2. Need to reduce the amount of calls made if common Cell Towers are pinged
+# ----------- 3. Time statistics can be recorded to log file for historic records
+
+
+# ----------- AWS RDS CONNECTION DETAILS ------------
+
 REGION = 'us-east-1'
 
 rds_host = "hyvemobile.ccrl36s8ovge.us-east-2.rds.amazonaws.com"
@@ -21,9 +34,11 @@ password = 'hyvemobilepassword'
 db_name = 'hyvemobile'
 
 conn = pymysql.connect(rds_host, user=name, passwd=password, db=db_name, connect_timeout=5)
-cur = conn.cursor()
+c = conn.cursor()
 
-cur.execute("""CREATE TABLE IF NOT EXISTS locations (
+# ------------ very Basic MySQL Table to hold the location data ------------
+
+c.execute("""CREATE TABLE IF NOT EXISTS locations (
             pingId INT PRIMARY KEY AUTO_INCREMENT,
             userId INT NOT NULL,
             fulLAddress VARCHAR(255) NOT NULL,
@@ -31,10 +46,11 @@ cur.execute("""CREATE TABLE IF NOT EXISTS locations (
             province VARCHAR(255) NOT NULL,
             country VARCHAR(255) NOT NULL)""")
 
+# ---------- init browser details for fancyURLopener
+
 mz = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
 apple = ' AppleWebKit/537.36 (KHTML, like Gecko) '
 chrome = 'Chrome/66.0.3359.181 Safari/537.36'
-
 
 class MyOpener(FancyURLopener): version = mz + apple + chrome
 
@@ -42,10 +58,11 @@ class MyOpener(FancyURLopener): version = mz + apple + chrome
 start = time.time()
 myopener = MyOpener()
 dt = str(datetime.datetime.today().strftime("-%B %d %Y "))
-#  assigns key
-googleKey = '&key=AIzaSyAaLTZYcL5GihQayCSTsOpm2rfBrZqqNA0'
 
-# ---------------         Initializing all variables
+# ---------------         assigns Google key ( PLEASE USE YOUR OWN KEY HERE ) --------------
+googleKey = '&key=#############################'
+
+# ---------------         Initializing all variables -----------------
 
 i = 0
 iIE = 0
@@ -103,7 +120,7 @@ with open(storage + '.csv', encoding='utf8') as f:
             {ord(c): "" for c in "ï»;^*()[]{};:/<>?\|~½“¯†®©¤;›½®¶´¢”¿¨¤§¥¼;…‹—–ºª¿€™ ¡œ¦«¶æ#$%"})
         searchName = validSearchName.replace('|', '+')
 
-        # List of known offenders of unicode problems
+        # List of known offenders of unicode problems - can be slimmed down in future
         searchName = searchName.replace(' ', '+')
         searchName = searchName.replace('\ufeff', '')
         searchName = searchName.replace('\xa0hion\n', '')
@@ -111,7 +128,7 @@ with open(storage + '.csv', encoding='utf8') as f:
         searchName = searchName.replace("'", "")
         searchName = unidecode(searchName)
 
-        # retrieve user id - referred to as 'code'
+        # retrieve user id
         # searchName is the full text blob that is being split into GPS points & user id
 
         sep = ','
@@ -220,10 +237,12 @@ with open(storage + '.csv', encoding='utf8') as f:
                 # ------- Add to AWS MySQL RDS -----------
                 insertSql = """insert into locations ( userId, fullAddress, city, province, country) values (%s, %s, %s, %s, %s)"""
 
-                cur.execute(insertSql, values)
+                c.execute(insertSql, values)
                 conn.commit()
 
                 print(userId, " :   --> ", formatted_address)
+
+        # --------------- Error Handling ------------------
         except IndexError as indexError:
 
             iIE = iIE + 1
@@ -294,7 +313,7 @@ with open(storage + '.csv', encoding='utf8') as f:
                 # ------- Add to AWS MySQL RDS -----------
                 insertSql = """insert into locations ( userId, fullAddress) values (%s, %s)"""
 
-                cur.execute(insertSql, values)
+                c.execute(insertSql, values)
                 conn.commit()
 
                 print(userId, " :   --> ", formatted_address)
@@ -307,11 +326,13 @@ with open(storage + '.csv', encoding='utf8') as f:
                 print('this loop took : ', timeTaken, ' seconds')
                 print('On Average loops are taking : ', timeSum / counter, ' seconds')
                 print('Estimated time remaining: ', (row_count - counter) * avgTime / 3600, ' hours')
+        # ------ Calculate time statistics for performance measuring -------
         endline = time.time()
         timeTaken = endline - startline
 
         timeSum = timeSum + timeTaken
         avgTime = timeSum / counter
+
         print('this loop took : ', timeTaken, ' seconds')
         print('On Average loops are taking : ', timeSum / counter, ' seconds')
         print('Estimated time remaining: ', (row_count - counter) * avgTime / 3600, ' hours')
