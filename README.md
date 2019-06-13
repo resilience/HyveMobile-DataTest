@@ -31,7 +31,11 @@ This script is used to perform Database commands on the AWS MySQL RDS db.
 # Folder Structure
 
 Backup of Ask       -       All the files provided initially incase of corruption/deletion
+
 Industry Research   -       Research, Papers & trends 
+
 Output              -       Initial historical debugging out
+
 Word Docs           -       Test Answer and related texts
+
 csv files           -       Storage for edited workbooks
