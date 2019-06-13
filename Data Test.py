@@ -14,6 +14,8 @@ from urllib.request import FancyURLopener
 import pymysql
 
 
+
+
 # ----------- This application takes in userId, Lat, Long from an excel file or .csv
 # ----------- These fields are these used as parameters in a Google API called Geocode
 # ----------- Geocode returns JSON data that we subsequently store locally in excel, and in AWS RDS MySQL db
