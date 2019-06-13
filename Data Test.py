@@ -119,7 +119,7 @@ with open(storage + '.csv', encoding='utf8') as f:
 
         # validate search parameters for raw data
         validSearchName = line.translate(
-            {ord(c): "" for c in "ï»;^*()[]{};:/<>?\|~½“¯†®©¤;›½®¶´¢”¿¨¤§¥¼;…‹—–ºª¿€™ ¡œ¦«¶æ#$%"})
+            {ord(c): "" for c in "ï»;^*()[]{};:/<>?\|~½“¯†®©¤;›½®¶´¢”¿¨¤§¥¼;…‹—–ºª¿€™ ¡œ¦«¶æ#$%"})
         searchName = validSearchName.replace('|', '+')
 
         # List of known offenders of unicode problems - can be slimmed down in future
@@ -345,4 +345,3 @@ print('TypeErrors: ', iTE)
 print('UnicodeEncodeErrors: ', iUEE)
 print('UnicodeErros: ', iUE)
 print('TOTAL TIME TAKEN: ', (end - start) / 3600, ' hours, for ', i, 'lines')
-
