@@ -67,24 +67,39 @@ googleKey = '&key=#############################'
 # ---------------         Initializing all variables -----------------
 
 i = 0
-iIE = 0
-iUE = 0
-iTE = 0
-iUEE = 0
-nE = 0
+iIE = 0         # counter for all index errors
+iUE = 0         # counter for all unicode errors
+iTE = 0         # counter for all type errors
+iUEE = 0        # counter for all unicode encode errors
+nE = 0          # counter for all name errors
 item = 1
 error = 0
-counter = 0
-timeSum = 0
-timeTaken = 0
-row_count = 0
-avgTime = 0
-endline = 0
-startline = 0
+counter = 0     # counter for each line passed from the uploaded file to parse
+timeSum = 0     # variable to aggregate time value
+timeTaken = 0   # variable that tracks time taken for main loop to complete
+row_count = 0   # counter to check file row size
+avgTime = 0     # variable measuring the average timeTaken
+endline = 0     # counter to measure end time
+startline = 0   # counter to measure start time
+
+# init tkinter
 
 root = tk.Tk()
 root.withdraw()
+
+# --------------  THREADING MULTIPLE INSTANCES
+
 # ------------- thread number gets hardcoded in this test instance
+
+# ------------- due to python multi-threading limitations this code can be duplicated to run multiple files
+# ------------- the load can thus be manually split over several machines
+# ------------- the only information that needs to change are:
+#
+# ------------- variables:
+#               thread
+#               storage
+#               outputName
+
 thread = 1
 storage = 'Address Storage' + str(thread)
 outputName = dt + 'GEOCODE OUTPUT HyveMobile thread ' + str(thread)
