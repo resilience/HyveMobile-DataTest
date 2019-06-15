@@ -1,5 +1,6 @@
-
 import pymysql
+import pymysql.cursors as cursors
+
 import socket
 import pandas
 
@@ -54,15 +55,46 @@ socket.getaddrinfo('127.0.0.1', 8080)
 conn = pymysql.connect(host='127.0.0.1', user='root', password='hyvemobilepassword', db='hyvedb')
 c = conn.cursor()
 
+# ---------------- RETURN COLUMN & DESCRIPTIONS
+# (column_name,
+#  type,
+#  None,
+#  None,
+#  None,
+#  None,
+#  null_ok,
+#  column_flags)
 
-c.execute("""select * from transactions""")
+
+c.execute("""select * from transactions LIMIT 0""")
+
+print(c.description)
 
 
-c.commit()
 
+#c.execute('select chargeincents from transactions as charges WHERE transactionstatus = "Success" AND MONTH(transaction_date) = 2 AND YEAR(transaction_date) = 2019 ;')
+
+
+c.execute("select * from subscribers LIMIT 0")
+
+print(c.description)
+print(c.fetchone())
+
+# ------- DROP TABLE -------------
+
+
+c.execute("DROP TABLE IF EXISTS subscribers")
+print('dropped subscribers')
+
+
+
+# ------------- PRINT ROWS ----------------
+
+'''
 result = []
 for row in c:
     result.append(list(row))
 print("Data from RDS...")
 print(result)
 
+'''

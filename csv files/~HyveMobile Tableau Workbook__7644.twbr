@@ -1,0 +1,2360 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20192.19.0515.1630                               -->
+<workbook source-build='2019.2.0 (20192.19.0515.1630)' source-platform='win' version='18.1' xml:base='https://eu-west-1a.online.tableau.com' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <Hyper_NormalizedExtracts />
+    <SheetIdentifierTracking ignorable='true' predowngraded='true' />
+    <SortTagCleanup />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <repository-location id='HyveMobileTableauWorkbook_15605040903070' path='/t/hyvemobiledatatest/workbooks' revision='1.0' site='hyvemobiledatatest' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='Transactions seperated (snippet)+' inline='true' name='federated.0kd4pox0klshrq1b2e97q1029zvp' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='Transactions seperated (snippet)' name='textscan.1vujuas0396l8r13valax1u84z6k'>
+            <connection class='textscan' directory='C:/Users/dmare/Desktop/HyveMobile/Application Test/Data Test/Data Test/HyveMobile-DataTest/csv files' filename='Transactions seperated (snippet).csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+          <named-connection caption='Subscribers' name='textscan.111bxsa0ruflv11an2d8d0jkjpb1'>
+            <connection class='textscan' directory='C:/Users/dmare/Desktop/HyveMobile/Application Test/Data Test/Data Test/HyveMobile-DataTest/csv files' filename='Subscribers.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation join='left' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[Transactions seperated (snippet).csv].[user_id]' />
+              <expression op='[Subscribers.csv].[user_id]' />
+            </expression>
+          </clause>
+          <relation connection='textscan.1vujuas0396l8r13valax1u84z6k' name='Transactions seperated (snippet).csv' table='[Transactions seperated (snippet)#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_ZA' separator=';'>
+              <column datatype='integer' name='#' ordinal='0' />
+              <column datatype='date' date-parse-format='yyyy-MM-dd HH:mm:ss.SSSSSS' name='transaction_date' ordinal='1' />
+              <column datatype='integer' name='user_id' ordinal='2' />
+              <column datatype='integer' name='subscription_id' ordinal='3' />
+              <column datatype='string' name='transcationstatus' ordinal='4' />
+              <column datatype='integer' name='chargeincents' ordinal='5' />
+            </columns>
+          </relation>
+          <relation connection='textscan.111bxsa0ruflv11an2d8d0jkjpb1' name='Subscribers.csv' table='[Subscribers#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_ZA' separator=';'>
+              <column datatype='integer' name='#' ordinal='0' />
+              <column datatype='datetime' name='transaction_date' ordinal='1' />
+              <column datatype='integer' name='subscription_id' ordinal='2' />
+              <column datatype='integer' name='user_id' ordinal='3' />
+              <column datatype='datetime' name='subscription_start' ordinal='4' />
+              <column datatype='datetime' name='subscription_end' ordinal='5' />
+              <column datatype='string' name='subscription_status' ordinal='6' />
+              <column datatype='string' name='provider' ordinal='7' />
+              <column datatype='string' name='service' ordinal='8' />
+              <column datatype='string' name='name' ordinal='9' />
+              <column datatype='string' name='currency_iso' ordinal='10' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[# (Subscribers.csv)]' value='[Subscribers.csv].[#]' />
+          <map key='[#]' value='[Transactions seperated (snippet).csv].[#]' />
+          <map key='[chargeincents]' value='[Transactions seperated (snippet).csv].[chargeincents]' />
+          <map key='[currency_iso]' value='[Subscribers.csv].[currency_iso]' />
+          <map key='[name]' value='[Subscribers.csv].[name]' />
+          <map key='[provider]' value='[Subscribers.csv].[provider]' />
+          <map key='[service]' value='[Subscribers.csv].[service]' />
+          <map key='[subscription_end]' value='[Subscribers.csv].[subscription_end]' />
+          <map key='[subscription_id (Subscribers.csv)]' value='[Subscribers.csv].[subscription_id]' />
+          <map key='[subscription_id]' value='[Transactions seperated (snippet).csv].[subscription_id]' />
+          <map key='[subscription_start]' value='[Subscribers.csv].[subscription_start]' />
+          <map key='[subscription_status]' value='[Subscribers.csv].[subscription_status]' />
+          <map key='[transaction_date (Subscribers.csv)]' value='[Subscribers.csv].[transaction_date]' />
+          <map key='[transaction_date]' value='[Transactions seperated (snippet).csv].[transaction_date]' />
+          <map key='[transcationstatus]' value='[Transactions seperated (snippet).csv].[transcationstatus]' />
+          <map key='[user_id (Subscribers.csv)]' value='[Subscribers.csv].[user_id]' />
+          <map key='[user_id]' value='[Transactions seperated (snippet).csv].[user_id]' />
+        </cols>
+        <refresh increment-key='' incremental-updates='false' />
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Transactions seperated (snippet).csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;R&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;;&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_ZA&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot; &quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>#</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[#]</local-name>
+            <parent-name>[Transactions seperated (snippet).csv]</parent-name>
+            <remote-alias>#</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>transaction_date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[transaction_date]</local-name>
+            <parent-name>[Transactions seperated (snippet).csv]</parent-name>
+            <remote-alias>transaction_date</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>user_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[user_id]</local-name>
+            <parent-name>[Transactions seperated (snippet).csv]</parent-name>
+            <remote-alias>user_id</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>subscription_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[subscription_id]</local-name>
+            <parent-name>[Transactions seperated (snippet).csv]</parent-name>
+            <remote-alias>subscription_id</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>transcationstatus</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[transcationstatus]</local-name>
+            <parent-name>[Transactions seperated (snippet).csv]</parent-name>
+            <remote-alias>transcationstatus</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>chargeincents</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[chargeincents]</local-name>
+            <parent-name>[Transactions seperated (snippet).csv]</parent-name>
+            <remote-alias>chargeincents</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Subscribers.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;R&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;;&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_ZA&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot; &quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>#</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[# (Subscribers.csv)]</local-name>
+            <parent-name>[Subscribers.csv]</parent-name>
+            <remote-alias>#</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>transaction_date</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[transaction_date (Subscribers.csv)]</local-name>
+            <parent-name>[Subscribers.csv]</parent-name>
+            <remote-alias>transaction_date</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>subscription_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[subscription_id (Subscribers.csv)]</local-name>
+            <parent-name>[Subscribers.csv]</parent-name>
+            <remote-alias>subscription_id</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>user_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[user_id (Subscribers.csv)]</local-name>
+            <parent-name>[Subscribers.csv]</parent-name>
+            <remote-alias>user_id</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>subscription_start</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[subscription_start]</local-name>
+            <parent-name>[Subscribers.csv]</parent-name>
+            <remote-alias>subscription_start</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>subscription_end</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[subscription_end]</local-name>
+            <parent-name>[Subscribers.csv]</parent-name>
+            <remote-alias>subscription_end</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>subscription_status</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[subscription_status]</local-name>
+            <parent-name>[Subscribers.csv]</parent-name>
+            <remote-alias>subscription_status</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>provider</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[provider]</local-name>
+            <parent-name>[Subscribers.csv]</parent-name>
+            <remote-alias>provider</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>service</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[service]</local-name>
+            <parent-name>[Subscribers.csv]</parent-name>
+            <remote-alias>service</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[name]</local-name>
+            <parent-name>[Subscribers.csv]</parent-name>
+            <remote-alias>name</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>currency_iso</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[currency_iso]</local-name>
+            <parent-name>[Subscribers.csv]</parent-name>
+            <remote-alias>currency_iso</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Charges' datatype='integer' name='[Calculation_112027041204305920]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='[chargeincents]' />
+      </column>
+      <column caption='Subcription Days' datatype='real' datatype-customized='true' name='[Calculation_112027041357398022]' role='dimension' type='quantitative'>
+        <calculation class='tableau' formula='if [subscription_status]=&apos;Cancelled&apos; then(DATEDIFF(&apos;minute&apos;,[subscription_start], [subscription_end]) / 1439)&#13;&#10;elseif [subscription_status]=&apos;Active&apos; then INT(DATEDIFF(&apos;minute&apos;,[subscription_start], Today()) / 1439) END' />
+      </column>
+      <column caption='Monthly Charge' datatype='real' name='[Calculation_112027041359974407]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Calculation_112027041357398022]/30*[chargeincents]/100' />
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Chargeincents' datatype='integer' name='[chargeincents]' role='dimension' type='ordinal' />
+      <column caption='Currency Iso' datatype='string' name='[currency_iso]' role='dimension' type='nominal' />
+      <column caption='Name' datatype='string' name='[name]' role='dimension' type='nominal' />
+      <column caption='Provider' datatype='string' name='[provider]' role='dimension' type='nominal' />
+      <column caption='Service' datatype='string' name='[service]' role='dimension' type='nominal' />
+      <column caption='Subscription End' datatype='datetime' name='[subscription_end]' role='dimension' type='ordinal' />
+      <column caption='subscription id (Subscribers.csv)' datatype='integer' name='[subscription_id (Subscribers.csv)]' role='dimension' type='ordinal' />
+      <column caption='Subscription Id' datatype='integer' name='[subscription_id]' role='dimension' type='ordinal' />
+      <column caption='Subscription Start' datatype='datetime' name='[subscription_start]' role='dimension' type='ordinal' />
+      <column caption='Subscription Status' datatype='string' name='[subscription_status]' role='dimension' type='nominal' />
+      <column caption='transaction date (Subscribers.csv)' datatype='datetime' name='[transaction_date (Subscribers.csv)]' role='dimension' type='ordinal' />
+      <column caption='Transaction Date' datatype='date' name='[transaction_date]' role='dimension' type='ordinal' />
+      <column caption='Transcationstatus' datatype='string' name='[transcationstatus]' role='dimension' type='nominal' />
+      <column caption='user id (Subscribers.csv)' datatype='integer' name='[user_id (Subscribers.csv)]' role='dimension' type='ordinal' />
+      <column caption='User Id' datatype='integer' name='[user_id]' role='dimension' type='ordinal' />
+      <column-instance column='[Calculation_112027041204305920]' derivation='Count' name='[cnt:Calculation_112027041204305920:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_112027041204305920]' derivation='Count' name='[cum:cnt:Calculation_112027041204305920:qk]' pivot='key' type='quantitative'>
+        <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+      </column-instance>
+      <column-instance column='[transaction_date (Subscribers.csv)]' derivation='Month' name='[mn:transaction_date (Subscribers.csv):ok]' pivot='key' type='ordinal' />
+      <column-instance column='[Forecast Indicator]' derivation='None' forecast-column-base='[Forecast Indicator]' forecast-column-type='forecast-indicator' name='[none:Forecast Indicator:nk]' pivot='key' type='nominal' />
+      <column-instance column='[service]' derivation='None' name='[none:service:nk]' pivot='key' type='nominal' />
+      <column-instance column='[subscription_status]' derivation='None' name='[none:subscription_status:nk]' pivot='key' type='nominal' />
+      <column-instance column='[transcationstatus]' derivation='None' name='[none:transcationstatus:nk]' pivot='key' type='nominal' />
+      <column-instance column='[Calculation_112027041204305920]' derivation='Count' name='[pcrk:cnt:Calculation_112027041204305920:qk]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Rows' rank-options='Competition,Ascending' type='PctRank' />
+      </column-instance>
+      <column-instance column='[transaction_date (Subscribers.csv)]' derivation='Quarter' name='[qr:transaction_date (Subscribers.csv):ok]' pivot='key' type='ordinal' />
+      <column-instance column='[Calculation_112027041204305920]' derivation='Count' name='[rank:cnt:Calculation_112027041204305920:qk]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Rows' rank-options='Competition,Descending' type='Rank' />
+      </column-instance>
+      <column-instance column='[transaction_date (Subscribers.csv)]' derivation='Year' name='[yr:transaction_date (Subscribers.csv):ok]' pivot='key' type='ordinal' />
+      <group hidden='true' name='[Inclusions (MONTH(transaction date (Subscribers.csv)),QUARTER(transaction date (Subscribers.csv)),Transcationstatus,YEAR(transaction date (Subscribers.csv)))]' name-style='unqualified' user:auto-column='include'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[mn:transaction_date (Subscribers.csv):ok]' />
+          <groupfilter function='level-members' level='[qr:transaction_date (Subscribers.csv):ok]' />
+          <groupfilter function='level-members' level='[none:transcationstatus:nk]' />
+          <groupfilter function='level-members' level='[yr:transaction_date (Subscribers.csv):ok]' />
+        </groupfilter>
+      </group>
+      <extract count='-1' enabled='true' type='normalized' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_GB' class='hyper' dbname='C:/Users/dmare/Documents/My Tableau Repository/Datasources/Transactions Data Extract+.hyper' default-settings='yes' schema='Extract' sf-has-unconstrained-join='yes' sslmode='' tablename='Extract' update-time='06/14/2019 09:20:14 AM' username='tableau_internal_user'>
+          <relation join='left' type='join'>
+            <clause type='join'>
+              <expression op='='>
+                <expression op='[Transactions seperated (snippet).csv].[user_id]' />
+                <expression op='[Subscribers.csv].[user_id]' />
+              </expression>
+            </clause>
+            <relation name='Transactions seperated (snippet).csv' table='[Extract].[Transactions seperated (snippet)#csv]' type='table' />
+            <relation name='Subscribers.csv' table='[Extract].[Subscribers#csv]' type='table' />
+          </relation>
+          <cols>
+            <map key='[# (Subscribers.csv)]' value='[Subscribers.csv].[#]' />
+            <map key='[#]' value='[Transactions seperated (snippet).csv].[#]' />
+            <map key='[chargeincents]' value='[Transactions seperated (snippet).csv].[chargeincents]' />
+            <map key='[currency_iso]' value='[Subscribers.csv].[currency_iso]' />
+            <map key='[name]' value='[Subscribers.csv].[name]' />
+            <map key='[provider]' value='[Subscribers.csv].[provider]' />
+            <map key='[service]' value='[Subscribers.csv].[service]' />
+            <map key='[subscription_end]' value='[Subscribers.csv].[subscription_end]' />
+            <map key='[subscription_id (Subscribers.csv)]' value='[Subscribers.csv].[subscription_id]' />
+            <map key='[subscription_id]' value='[Transactions seperated (snippet).csv].[subscription_id]' />
+            <map key='[subscription_start]' value='[Subscribers.csv].[subscription_start]' />
+            <map key='[subscription_status]' value='[Subscribers.csv].[subscription_status]' />
+            <map key='[transaction_date (Subscribers.csv)]' value='[Subscribers.csv].[transaction_date]' />
+            <map key='[transaction_date]' value='[Transactions seperated (snippet).csv].[transaction_date]' />
+            <map key='[transcationstatus]' value='[Transactions seperated (snippet).csv].[transcationstatus]' />
+            <map key='[user_id (Subscribers.csv)]' value='[Subscribers.csv].[user_id]' />
+            <map key='[user_id]' value='[Transactions seperated (snippet).csv].[user_id]' />
+          </cols>
+          <refresh increment-key='' incremental-updates='false'>
+            <refresh-event add-from-file-path='Transactions seperated (snippet)+' increment-value='%null%' refresh-type='create' rows-inserted='1051275' timestamp-start='2019-06-14 09:20:14.895' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>#</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[#]</local-name>
+              <parent-name>[Transactions seperated (snippet).csv]</parent-name>
+              <remote-alias>#</remote-alias>
+              <ordinal>0</ordinal>
+              <family>Transactions seperated (snippet).csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1048575</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>transaction_date</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[transaction_date]</local-name>
+              <parent-name>[Transactions seperated (snippet).csv]</parent-name>
+              <remote-alias>transaction_date</remote-alias>
+              <ordinal>1</ordinal>
+              <family>Transactions seperated (snippet).csv</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>79</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>user_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[user_id]</local-name>
+              <parent-name>[Transactions seperated (snippet).csv]</parent-name>
+              <remote-alias>user_id</remote-alias>
+              <ordinal>2</ordinal>
+              <family>Transactions seperated (snippet).csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>21113</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>subscription_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[subscription_id]</local-name>
+              <parent-name>[Transactions seperated (snippet).csv]</parent-name>
+              <remote-alias>subscription_id</remote-alias>
+              <ordinal>3</ordinal>
+              <family>Transactions seperated (snippet).csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>21142</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>transcationstatus</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[transcationstatus]</local-name>
+              <parent-name>[Transactions seperated (snippet).csv]</parent-name>
+              <remote-alias>transcationstatus</remote-alias>
+              <ordinal>4</ordinal>
+              <family>Transactions seperated (snippet).csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>chargeincents</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[chargeincents]</local-name>
+              <parent-name>[Transactions seperated (snippet).csv]</parent-name>
+              <remote-alias>chargeincents</remote-alias>
+              <ordinal>5</ordinal>
+              <family>Transactions seperated (snippet).csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>#</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[# (Subscribers.csv)]</local-name>
+              <parent-name>[Subscribers.csv]</parent-name>
+              <remote-alias>#</remote-alias>
+              <ordinal>6</ordinal>
+              <family>Subscribers.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>6373</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>transaction_date</remote-name>
+              <remote-type>135</remote-type>
+              <local-name>[transaction_date (Subscribers.csv)]</local-name>
+              <parent-name>[Subscribers.csv]</parent-name>
+              <remote-alias>transaction_date</remote-alias>
+              <ordinal>7</ordinal>
+              <family>Subscribers.csv</family>
+              <local-type>datetime</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>5698</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>subscription_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[subscription_id (Subscribers.csv)]</local-name>
+              <parent-name>[Subscribers.csv]</parent-name>
+              <remote-alias>subscription_id</remote-alias>
+              <ordinal>8</ordinal>
+              <family>Subscribers.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>6373</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>user_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[user_id (Subscribers.csv)]</local-name>
+              <parent-name>[Subscribers.csv]</parent-name>
+              <remote-alias>user_id</remote-alias>
+              <ordinal>9</ordinal>
+              <family>Subscribers.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>6148</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>subscription_start</remote-name>
+              <remote-type>135</remote-type>
+              <local-name>[subscription_start]</local-name>
+              <parent-name>[Subscribers.csv]</parent-name>
+              <remote-alias>subscription_start</remote-alias>
+              <ordinal>10</ordinal>
+              <family>Subscribers.csv</family>
+              <local-type>datetime</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>5247</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>subscription_end</remote-name>
+              <remote-type>135</remote-type>
+              <local-name>[subscription_end]</local-name>
+              <parent-name>[Subscribers.csv]</parent-name>
+              <remote-alias>subscription_end</remote-alias>
+              <ordinal>11</ordinal>
+              <family>Subscribers.csv</family>
+              <local-type>datetime</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>2682</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>subscription_status</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[subscription_status]</local-name>
+              <parent-name>[Subscribers.csv]</parent-name>
+              <remote-alias>subscription_status</remote-alias>
+              <ordinal>12</ordinal>
+              <family>Subscribers.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>provider</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[provider]</local-name>
+              <parent-name>[Subscribers.csv]</parent-name>
+              <remote-alias>provider</remote-alias>
+              <ordinal>13</ordinal>
+              <family>Subscribers.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>service</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[service]</local-name>
+              <parent-name>[Subscribers.csv]</parent-name>
+              <remote-alias>service</remote-alias>
+              <ordinal>14</ordinal>
+              <family>Subscribers.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>name</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[name]</local-name>
+              <parent-name>[Subscribers.csv]</parent-name>
+              <remote-alias>name</remote-alias>
+              <ordinal>15</ordinal>
+              <family>Subscribers.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>currency_iso</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[currency_iso]</local-name>
+              <parent-name>[Subscribers.csv]</parent-name>
+              <remote-alias>currency_iso</remote-alias>
+              <ordinal>16</ordinal>
+              <family>Subscribers.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' dim-percentage='0.658287' measure-ordering='alphabetic' measure-percentage='0.341713' rowDisplayCount='1000' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:Calculation_112027041204305920:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:cnt:Calculation_112027041204305920:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0kd4pox0klshrq1b2e97q1029zvp].[pcrk:cnt:Calculation_112027041204305920:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0kd4pox0klshrq1b2e97q1029zvp].[rank:cnt:Calculation_112027041204305920:qk]&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:transcationstatus:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;Failed&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Success&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:service:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;Cooking Recipes&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;Pokemon-Go Locations&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;GOT Spoilers&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Cool Songs&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:subscription_status:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;Active&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Cancelled&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[yr:transaction_date (Subscribers.csv):ok]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>2015</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>2019</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>2018</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>2017</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>%all%</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>2016</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;South Africa&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <default-sorts>
+        <manual-sort column='[none:Forecast Indicator:nk]' direction='ASC'>
+          <dictionary>
+            <bucket>&quot;Actual&quot;</bucket>
+            <bucket>&quot;Estimate&quot;</bucket>
+          </dictionary>
+        </manual-sort>
+      </default-sorts>
+      <field-sort-info field-sort-order-type='custom-order'>
+        <field-sort-custom-order field='subscription_start' />
+        <field-sort-custom-order field='Calculation_112027041383100425' />
+        <field-sort-custom-order field='Calculation_112027041357398022' />
+        <field-sort-custom-order field='Calculation_112027041359974407' />
+        <field-sort-custom-order field='subscription_end' />
+        <field-sort-custom-order field='subscription_status' />
+        <field-sort-custom-order field='provider' />
+        <field-sort-custom-order field='service' />
+        <field-sort-custom-order field='currency_iso' />
+        <field-sort-custom-order field='#' />
+        <field-sort-custom-order field='transaction_date' />
+        <field-sort-custom-order field='user_id' />
+        <field-sort-custom-order field='subscription_id' />
+        <field-sort-custom-order field='transcationstatus' />
+        <field-sort-custom-order field='chargeincents' />
+        <field-sort-custom-order field='Calculation_112027041204305920' />
+        <field-sort-custom-order field='# (Subscribers.csv)' />
+        <field-sort-custom-order field='transaction_date (Subscribers.csv)' />
+        <field-sort-custom-order field='subscription_id (Subscribers.csv)' />
+        <field-sort-custom-order field='user_id (Subscribers.csv)' />
+        <field-sort-custom-order field='name' />
+      </field-sort-info>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Charges vs Subscriptions days'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Impact of Charge in Cents on Subscription days</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Transactions seperated (snippet)+' name='federated.0kd4pox0klshrq1b2e97q1029zvp' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0kd4pox0klshrq1b2e97q1029zvp'>
+            <column caption='Charges' datatype='integer' name='[Calculation_112027041204305920]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='[chargeincents]' />
+            </column>
+            <column caption='Subcription Days' datatype='real' datatype-customized='true' name='[Calculation_112027041357398022]' role='dimension' type='quantitative'>
+              <calculation class='tableau' formula='if [subscription_status]=&apos;Cancelled&apos; then(DATEDIFF(&apos;minute&apos;,[subscription_start], [subscription_end]) / 1439)&#13;&#10;elseif [subscription_status]=&apos;Active&apos; then INT(DATEDIFF(&apos;minute&apos;,[subscription_start], Today()) / 1439) END' />
+            </column>
+            <column caption='Chargeincents' datatype='integer' name='[chargeincents]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_112027041204305920]' derivation='None' name='[none:Calculation_112027041204305920:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Calculation_112027041357398022]' derivation='None' name='[none:Calculation_112027041357398022:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[transaction_date (Subscribers.csv)]' derivation='Quarter' name='[qr:transaction_date (Subscribers.csv):ok]' pivot='key' type='ordinal' />
+            <column caption='Subscription End' datatype='datetime' name='[subscription_end]' role='dimension' type='ordinal' />
+            <column caption='Subscription Start' datatype='datetime' name='[subscription_start]' role='dimension' type='ordinal' />
+            <column caption='Subscription Status' datatype='string' name='[subscription_status]' role='dimension' type='nominal' />
+            <column caption='transaction date (Subscribers.csv)' datatype='datetime' name='[transaction_date (Subscribers.csv)]' role='dimension' type='ordinal' />
+            <column-instance column='[transaction_date (Subscribers.csv)]' derivation='Year' name='[yr:transaction_date (Subscribers.csv):ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='height' field='[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date (Subscribers.csv):ok]' value='1057' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date (Subscribers.csv):ok]' value='56' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Square' />
+            <encodings>
+              <color column='[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date (Subscribers.csv):ok]' />
+            </encodings>
+            <trendline enable-confidence-bands='false' enable-instant-analytics='true' enabled='true' exclude-color='false' exclude-intercept='false' fit='linear' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-transparency' value='255' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='56' />
+                <format attr='maxwidth' value='56' />
+                <format attr='minheight' value='238' />
+                <format attr='maxheight' value='238' />
+                <format attr='aspect' value='0' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.0kd4pox0klshrq1b2e97q1029zvp].[none:Calculation_112027041204305920:ok] * [federated.0kd4pox0klshrq1b2e97q1029zvp].[none:Calculation_112027041357398022:qk])</rows>
+        <cols>([federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date (Subscribers.csv):ok] / [federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date (Subscribers.csv):ok])</cols>
+      </table>
+      <simple-id uuid='{8470BCA5-DD1D-406D-92E3-C1CDCCF923F0}' />
+    </worksheet>
+    <worksheet name='Churn Rate'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Churn Rate vs Adoption Rate</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Transactions seperated (snippet)+' name='federated.0kd4pox0klshrq1b2e97q1029zvp' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0kd4pox0klshrq1b2e97q1029zvp'>
+            <column-instance column='[subscription_status]' derivation='Count' name='[cnt:subscription_status:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[transaction_date]' derivation='Day' name='[dy:transaction_date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[transaction_date]' derivation='Month' name='[mn:transaction_date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[subscription_status]' derivation='None' name='[none:subscription_status:nk]' pivot='key' type='nominal' />
+            <column-instance column='[transaction_date]' derivation='Quarter' name='[qr:transaction_date:ok]' pivot='key' type='ordinal' />
+            <column caption='Subscription Status' datatype='string' name='[subscription_status]' role='dimension' type='nominal' />
+            <column caption='Transaction Date' datatype='date' name='[transaction_date]' role='dimension' type='ordinal' />
+            <column-instance column='[transaction_date]' derivation='Year' name='[yr:transaction_date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:subscription_status:nk]'>
+            <groupfilter function='level-members' level='[none:subscription_status:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:subscription_status:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='height' field='[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]' value='1041' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]' value='12' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:subscription_status:nk]' />
+            </encodings>
+            <trendline enable-confidence-bands='false' enable-instant-analytics='true' enabled='true' exclude-color='false' exclude-intercept='false' fit='linear' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</rows>
+        <cols>([federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok] / ([federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok] / ([federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok] / [federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok])))</cols>
+        <mark-labels>
+          <mark-label id='0' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:subscription_status:nk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>7591</value>
+                <value>31</value>
+                <value>1</value>
+                <value>&quot;Cancelled&quot;</value>
+                <value>1</value>
+                <value>2019</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='1' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:subscription_status:nk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>9915</value>
+                <value>1</value>
+                <value>1</value>
+                <value>&quot;Cancelled&quot;</value>
+                <value>1</value>
+                <value>2019</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='2' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:subscription_status:nk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>7978</value>
+                <value>1</value>
+                <value>2</value>
+                <value>&quot;Cancelled&quot;</value>
+                <value>1</value>
+                <value>2019</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='3' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:subscription_status:nk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>7241</value>
+                <value>28</value>
+                <value>2</value>
+                <value>&quot;Cancelled&quot;</value>
+                <value>1</value>
+                <value>2019</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='4' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:subscription_status:nk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>7048</value>
+                <value>1</value>
+                <value>3</value>
+                <value>&quot;Cancelled&quot;</value>
+                <value>1</value>
+                <value>2019</value>
+              </tuple>
+            </tuple-reference>
+            <label-position x='11' y='-34' />
+          </mark-label>
+          <mark-label id='5' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:subscription_status:nk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>5374</value>
+                <value>20</value>
+                <value>3</value>
+                <value>&quot;Cancelled&quot;</value>
+                <value>1</value>
+                <value>2019</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='6' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:subscription_status:nk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>6403</value>
+                <value>20</value>
+                <value>3</value>
+                <value>&quot;Active&quot;</value>
+                <value>1</value>
+                <value>2019</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='7' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:subscription_status:nk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>5730</value>
+                <value>1</value>
+                <value>3</value>
+                <value>&quot;Active&quot;</value>
+                <value>1</value>
+                <value>2019</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='8' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:subscription_status:nk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>6025</value>
+                <value>28</value>
+                <value>2</value>
+                <value>&quot;Active&quot;</value>
+                <value>1</value>
+                <value>2019</value>
+              </tuple>
+            </tuple-reference>
+            <label-position x='-10' y='19' />
+          </mark-label>
+          <mark-label id='9' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:subscription_status:nk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>5326</value>
+                <value>1</value>
+                <value>2</value>
+                <value>&quot;Active&quot;</value>
+                <value>1</value>
+                <value>2019</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='10' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:subscription_status:nk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>5153</value>
+                <value>31</value>
+                <value>1</value>
+                <value>&quot;Active&quot;</value>
+                <value>1</value>
+                <value>2019</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='11' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:subscription_status:nk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>5202</value>
+                <value>1</value>
+                <value>1</value>
+                <value>&quot;Active&quot;</value>
+                <value>1</value>
+                <value>2019</value>
+              </tuple>
+            </tuple-reference>
+            <label-position x='11' y='55' />
+          </mark-label>
+        </mark-labels>
+      </table>
+      <simple-id uuid='{DE7C95DF-DECD-47DA-AF01-E3393A0228A9}' />
+    </worksheet>
+    <worksheet name='Forecasting'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Churn Rate vs Adoption Rate</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Transactions seperated (snippet)+' name='federated.0kd4pox0klshrq1b2e97q1029zvp' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0kd4pox0klshrq1b2e97q1029zvp'>
+            <column-instance column='[subscription_status]' derivation='Count' name='[cnt:subscription_status:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[transaction_date]' derivation='Day' name='[dy:transaction_date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[subscription_status]' derivation='Count' forecast-column-base='[cnt:subscription_status:qk]' forecast-column-type='forecast-value' name='[fVal:cnt:subscription_status:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[transaction_date]' derivation='Month' name='[mn:transaction_date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Forecast Indicator]' derivation='None' forecast-column-base='[Forecast Indicator]' forecast-column-type='forecast-indicator' name='[none:Forecast Indicator:nk]' pivot='key' type='nominal' />
+            <column-instance column='[subscription_status]' derivation='None' name='[none:subscription_status:nk]' pivot='key' type='nominal' />
+            <column-instance column='[transaction_date]' derivation='Quarter' name='[qr:transaction_date:ok]' pivot='key' type='ordinal' />
+            <column caption='Subscription Status' datatype='string' name='[subscription_status]' role='dimension' type='nominal' />
+            <column caption='Transaction Date' datatype='date' name='[transaction_date]' role='dimension' type='ordinal' />
+            <column-instance column='[transaction_date]' derivation='Year' name='[yr:transaction_date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='height' field='[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]' value='1073' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]' value='11' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:subscription_status:nk]' />
+              <color column='[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:Forecast Indicator:nk]' />
+            </encodings>
+            <trendline enable-confidence-bands='false' enable-instant-analytics='true' enabled='true' exclude-color='false' exclude-intercept='false' fit='linear' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0kd4pox0klshrq1b2e97q1029zvp].[fVal:cnt:subscription_status:qk]</rows>
+        <cols>([federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok] / ([federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok] / ([federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok] / [federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok])))</cols>
+        <forecast-specification auto-forecast-agg='true' band-confidence-level='95.000000' enabled='true' fill-type='fill-missing' ignore-last='1' model-type='auto-season' range-type='auto' show-prediction-bands='true' />
+      </table>
+      <simple-id uuid='{018F38EE-5EE0-4D07-B972-9F32CC2B1ED3}' />
+    </worksheet>
+    <worksheet name='Frequency of subscription days'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Impact of Charge in Cents on Subscription days</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Transactions seperated (snippet)+' name='federated.0kd4pox0klshrq1b2e97q1029zvp' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0kd4pox0klshrq1b2e97q1029zvp'>
+            <column caption='Charges' datatype='integer' name='[Calculation_112027041204305920]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='[chargeincents]' />
+            </column>
+            <column caption='Subcription Days' datatype='real' datatype-customized='true' name='[Calculation_112027041357398022]' role='dimension' type='quantitative'>
+              <calculation class='tableau' formula='if [subscription_status]=&apos;Cancelled&apos; then(DATEDIFF(&apos;minute&apos;,[subscription_start], [subscription_end]) / 1439)&#13;&#10;elseif [subscription_status]=&apos;Active&apos; then INT(DATEDIFF(&apos;minute&apos;,[subscription_start], Today()) / 1439) END' />
+            </column>
+            <column caption='Chargeincents' datatype='integer' name='[chargeincents]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_112027041357398022]' derivation='Count' name='[cnt:Calculation_112027041357398022:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[transaction_date (Subscribers.csv)]' derivation='Month' name='[mn:transaction_date (Subscribers.csv):ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Calculation_112027041204305920]' derivation='None' name='[none:Calculation_112027041204305920:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[transcationstatus]' derivation='None' name='[none:transcationstatus:nk]' pivot='key' type='nominal' />
+            <column-instance column='[transaction_date (Subscribers.csv)]' derivation='Quarter' name='[qr:transaction_date (Subscribers.csv):ok]' pivot='key' type='ordinal' />
+            <column caption='Subscription End' datatype='datetime' name='[subscription_end]' role='dimension' type='ordinal' />
+            <column caption='Subscription Start' datatype='datetime' name='[subscription_start]' role='dimension' type='ordinal' />
+            <column caption='Subscription Status' datatype='string' name='[subscription_status]' role='dimension' type='nominal' />
+            <column caption='transaction date (Subscribers.csv)' datatype='datetime' name='[transaction_date (Subscribers.csv)]' role='dimension' type='ordinal' />
+            <column caption='Transcationstatus' datatype='string' name='[transcationstatus]' role='dimension' type='nominal' />
+            <column-instance column='[transaction_date (Subscribers.csv)]' derivation='Year' name='[yr:transaction_date (Subscribers.csv):ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:transcationstatus:nk]'>
+            <groupfilter function='member' level='[none:transcationstatus:nk]' member='&quot;Success&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:transcationstatus:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='height' field='[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date (Subscribers.csv):ok]' value='1073' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date (Subscribers.csv):ok]' value='49' />
+            <format attr='width' field='[federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date (Subscribers.csv):ok]' value='28' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date (Subscribers.csv):ok]' />
+            </encodings>
+            <trendline enable-confidence-bands='false' enable-instant-analytics='true' enabled='true' exclude-color='false' exclude-intercept='false' fit='linear' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-transparency' value='255' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>(([federated.0kd4pox0klshrq1b2e97q1029zvp].[none:Calculation_112027041204305920:ok] / [federated.0kd4pox0klshrq1b2e97q1029zvp].[none:transcationstatus:nk]) * [federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:Calculation_112027041357398022:qk])</rows>
+        <cols>([federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date (Subscribers.csv):ok] / ([federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date (Subscribers.csv):ok] / [federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date (Subscribers.csv):ok]))</cols>
+      </table>
+      <simple-id uuid='{311498D2-22EC-43E6-ACAB-DE8BDE7CDBA3}' />
+    </worksheet>
+    <worksheet name='New Customer Intake'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Transactions seperated (snippet)+' name='federated.0kd4pox0klshrq1b2e97q1029zvp' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0kd4pox0klshrq1b2e97q1029zvp'>
+            <column-instance column='[user_id (Subscribers.csv)]' derivation='CountD' name='[ctd:user_id (Subscribers.csv):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[transaction_date]' derivation='Day' name='[dy:transaction_date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[transaction_date]' derivation='Month' name='[mn:transaction_date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[transaction_date]' derivation='Quarter' name='[qr:transaction_date:ok]' pivot='key' type='ordinal' />
+            <column caption='Transaction Date' datatype='date' name='[transaction_date]' role='dimension' type='ordinal' />
+            <column caption='user id (Subscribers.csv)' datatype='integer' name='[user_id (Subscribers.csv)]' role='dimension' type='ordinal' />
+            <column-instance column='[transaction_date]' derivation='Year' name='[yr:transaction_date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='height' field='[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]' value='1097' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]' value='13' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0kd4pox0klshrq1b2e97q1029zvp].[ctd:user_id (Subscribers.csv):qk]</rows>
+        <cols>([federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok] / ([federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok] / ([federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok] / [federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok])))</cols>
+      </table>
+      <simple-id uuid='{070890E6-AA09-469F-883B-07CBB0F1E1EA}' />
+    </worksheet>
+    <worksheet name='Provider Engagement'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Transactions seperated (snippet)+' name='federated.0kd4pox0klshrq1b2e97q1029zvp' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0kd4pox0klshrq1b2e97q1029zvp'>
+            <column-instance column='[transcationstatus]' derivation='Count' name='[cum:cnt:transcationstatus:qk]' pivot='key' type='quantitative'>
+              <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+            </column-instance>
+            <column-instance column='[transaction_date]' derivation='Day' name='[dy:transaction_date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[transaction_date]' derivation='Month' name='[mn:transaction_date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[provider]' derivation='None' name='[none:provider:nk]' pivot='key' type='nominal' />
+            <column caption='Provider' datatype='string' name='[provider]' role='dimension' type='nominal' />
+            <column-instance column='[transaction_date]' derivation='Quarter' name='[qr:transaction_date:ok]' pivot='key' type='ordinal' />
+            <column caption='Transaction Date' datatype='date' name='[transaction_date]' role='dimension' type='ordinal' />
+            <column caption='Transcationstatus' datatype='string' name='[transcationstatus]' role='dimension' type='nominal' />
+            <column-instance column='[transaction_date]' derivation='Year' name='[yr:transaction_date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='height' field='[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]' value='1021' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]' value='10' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <color column='[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:provider:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='310' />
+                <format attr='maxwidth' value='310' />
+                <format attr='minheight' value='230' />
+                <format attr='maxheight' value='230' />
+                <format attr='aspect' value='0' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.0kd4pox0klshrq1b2e97q1029zvp].[none:provider:nk] * [federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:cnt:transcationstatus:qk])</rows>
+        <cols>([federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok] / ([federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok] / ([federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok] / [federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok])))</cols>
+      </table>
+      <simple-id uuid='{2FB93C80-946A-4652-97E8-6D4A390AB801}' />
+    </worksheet>
+    <worksheet name='Service Engagement'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Transactions seperated (snippet)+' name='federated.0kd4pox0klshrq1b2e97q1029zvp' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0kd4pox0klshrq1b2e97q1029zvp'>
+            <column-instance column='[service]' derivation='Count' name='[cum:cnt:service:qk]' pivot='key' type='quantitative'>
+              <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+            </column-instance>
+            <column-instance column='[transaction_date]' derivation='Day' name='[dy:transaction_date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[transaction_date]' derivation='Month' name='[mn:transaction_date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[service]' derivation='None' name='[none:service:nk]' pivot='key' type='nominal' />
+            <column-instance column='[transaction_date]' derivation='Quarter' name='[qr:transaction_date:ok]' pivot='key' type='ordinal' />
+            <column caption='Service' datatype='string' name='[service]' role='dimension' type='nominal' />
+            <column caption='Transaction Date' datatype='date' name='[transaction_date]' role='dimension' type='ordinal' />
+            <column-instance column='[transaction_date]' derivation='Year' name='[yr:transaction_date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0kd4pox0klshrq1b2e97q1029zvp].[:Measure Names]'>
+            <groupfilter function='level-members' level='[:Measure Names]' />
+          </filter>
+          <filter class='categorical' column='[federated.0kd4pox0klshrq1b2e97q1029zvp].[:Measure Names]' kind='hide'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[:Measure Names]' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0kd4pox0klshrq1b2e97q1029zvp].[sum:\# (Subscribers.csv):qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0kd4pox0klshrq1b2e97q1029zvp].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='height' field='[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]' value='1085' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]' value='10' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='display-field-labels' scope='cols' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <color column='[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:cnt:service:qk]</rows>
+        <cols>([federated.0kd4pox0klshrq1b2e97q1029zvp].[:Measure Names] / ([federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok] / ([federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date:ok] / ([federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date:ok] / [federated.0kd4pox0klshrq1b2e97q1029zvp].[dy:transaction_date:ok]))))</cols>
+      </table>
+      <simple-id uuid='{7D461F66-4302-4F02-B1EA-1050CB1867A1}' />
+    </worksheet>
+    <worksheet name='Sheet 10'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Transactions seperated (snippet)+' name='federated.0kd4pox0klshrq1b2e97q1029zvp' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0kd4pox0klshrq1b2e97q1029zvp'>
+            <column-instance column='[transcationstatus]' derivation='Count' name='[cnt:transcationstatus:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[transaction_date (Subscribers.csv)]' derivation='Month' name='[mn:transaction_date (Subscribers.csv):ok]' pivot='key' type='ordinal' />
+            <column-instance column='[transcationstatus]' derivation='None' name='[none:transcationstatus:nk]' pivot='key' type='nominal' />
+            <column-instance column='[transaction_date (Subscribers.csv)]' derivation='Quarter' name='[qr:transaction_date (Subscribers.csv):ok]' pivot='key' type='ordinal' />
+            <column caption='transaction date (Subscribers.csv)' datatype='datetime' name='[transaction_date (Subscribers.csv)]' role='dimension' type='ordinal' />
+            <column caption='Transcationstatus' datatype='string' name='[transcationstatus]' role='dimension' type='nominal' />
+            <column-instance column='[transaction_date (Subscribers.csv)]' derivation='Year' name='[yr:transaction_date (Subscribers.csv):ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <color column='[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:transcationstatus:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:transcationstatus:qk]</rows>
+        <cols>([federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date (Subscribers.csv):ok] / ([federated.0kd4pox0klshrq1b2e97q1029zvp].[qr:transaction_date (Subscribers.csv):ok] / [federated.0kd4pox0klshrq1b2e97q1029zvp].[mn:transaction_date (Subscribers.csv):ok]))</cols>
+      </table>
+      <simple-id uuid='{F03296F1-ED52-40B2-A39C-240EC88A64AC}' />
+    </worksheet>
+    <worksheet name='Sheet 9'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Transactions seperated (snippet)+' name='federated.0kd4pox0klshrq1b2e97q1029zvp' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0kd4pox0klshrq1b2e97q1029zvp'>
+            <column caption='Subcription Days' datatype='real' datatype-customized='true' name='[Calculation_112027041357398022]' role='dimension' type='quantitative'>
+              <calculation class='tableau' formula='if [subscription_status]=&apos;Cancelled&apos; then(DATEDIFF(&apos;minute&apos;,[subscription_start], [subscription_end]) / 1439)&#13;&#10;elseif [subscription_status]=&apos;Active&apos; then INT(DATEDIFF(&apos;minute&apos;,[subscription_start], Today()) / 1439) END' />
+            </column>
+            <column caption='Monthly Charge' datatype='real' name='[Calculation_112027041359974407]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='[Calculation_112027041357398022]/30*[chargeincents]/100' />
+            </column>
+            <column caption='Chargeincents' datatype='integer' name='[chargeincents]' role='dimension' type='ordinal' />
+            <column-instance column='[user_id (Subscribers.csv)]' derivation='None' name='[none:user_id (Subscribers.csv):ok]' pivot='key' type='ordinal' />
+            <column-instance column='[user_id (Subscribers.csv)]' derivation='None' name='[none:user_id (Subscribers.csv):qk]' pivot='key' type='quantitative' />
+            <column caption='Subscription End' datatype='datetime' name='[subscription_end]' role='dimension' type='ordinal' />
+            <column caption='Subscription Start' datatype='datetime' name='[subscription_start]' role='dimension' type='ordinal' />
+            <column caption='Subscription Status' datatype='string' name='[subscription_status]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_112027041359974407]' derivation='Sum' name='[sum:Calculation_112027041359974407:qk]' pivot='key' type='quantitative' />
+            <column caption='Transaction Date' datatype='date' name='[transaction_date]' role='dimension' type='ordinal' />
+            <column caption='user id (Subscribers.csv)' datatype='integer' name='[user_id (Subscribers.csv)]' role='dimension' type='ordinal' />
+            <column-instance column='[transaction_date]' derivation='Year' name='[yr:transaction_date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:user_id (Subscribers.csv):ok]'>
+            <groupfilter function='level-members' level='[none:user_id (Subscribers.csv):ok]' user:ui-manual-selection='true' user:ui-manual-selection-is-empty='true' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:user_id (Subscribers.csv):ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.0kd4pox0klshrq1b2e97q1029zvp].[sum:Calculation_112027041359974407:qk]</rows>
+        <cols>([federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date:ok] * [federated.0kd4pox0klshrq1b2e97q1029zvp].[none:user_id (Subscribers.csv):qk])</cols>
+      </table>
+      <simple-id uuid='{48E26145-46FC-4C3B-A94A-25A87CC431D0}' />
+    </worksheet>
+    <worksheet name='Subscription Length per Service'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Transactions seperated (snippet)+' name='federated.0kd4pox0klshrq1b2e97q1029zvp' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0kd4pox0klshrq1b2e97q1029zvp'>
+            <column caption='Subcription Days' datatype='real' datatype-customized='true' name='[Calculation_112027041357398022]' role='dimension' type='quantitative'>
+              <calculation class='tableau' formula='if [subscription_status]=&apos;Cancelled&apos; then(DATEDIFF(&apos;minute&apos;,[subscription_start], [subscription_end]) / 1439)&#13;&#10;elseif [subscription_status]=&apos;Active&apos; then INT(DATEDIFF(&apos;minute&apos;,[subscription_start], Today()) / 1439) END' />
+            </column>
+            <column-instance column='[Calculation_112027041357398022]' derivation='Avg' name='[cum:avg:Calculation_112027041357398022:qk]' pivot='key' type='quantitative'>
+              <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+            </column-instance>
+            <column-instance column='[service]' derivation='None' name='[none:service:nk]' pivot='key' type='nominal' />
+            <column caption='Service' datatype='string' name='[service]' role='dimension' type='nominal' />
+            <column caption='Subscription End' datatype='datetime' name='[subscription_end]' role='dimension' type='ordinal' />
+            <column caption='Subscription Start' datatype='datetime' name='[subscription_start]' role='dimension' type='ordinal' />
+            <column caption='Subscription Status' datatype='string' name='[subscription_status]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]' field-type='quantitative' max='3040.4014116645071' min='-1825.8697627543281' range-type='fixed' scope='rows' type='space' />
+            <format attr='width' field='[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]' value='86' />
+            <format attr='height' field='[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]' value='1077' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]' value='213' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='3.7900552749633789' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]</rows>
+        <cols>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]</cols>
+        <mark-labels>
+          <mark-label id='0' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>&quot;Pokemon-Go Locations&quot;</value>
+                <value>1206.5598165528111</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='1' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>&quot;Cooking Recipes&quot;</value>
+                <value>409.79171319899655</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='2' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>&quot;GOT Spoilers&quot;</value>
+                <value>1045.7547380837277</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+          <mark-label id='3' label-state='on'>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]</field>
+                  </x-fields>
+                  <y-fields>
+                    <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]</field>
+                  </y-fields>
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]</field>
+                  <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>&quot;Cool Songs&quot;</value>
+                <value>667.3603785067595</value>
+              </tuple>
+            </tuple-reference>
+          </mark-label>
+        </mark-labels>
+        <annotations>
+          <annotation class='point' id='4' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run fontalignment='0' fontcolor='#787878'>GOT Spoilers Subscribers use the service for an average of : </run>
+              <run bold='true' fontalignment='0'>&lt;[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]&gt; Days </run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]</field>
+                      </x-fields>
+                      <y-fields>
+                        <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]</field>
+                      </y-fields>
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]</field>
+                      <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>&quot;GOT Spoilers&quot;</value>
+                    <value>1195.959221335308</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='150' y='94' />
+          </annotation>
+          <annotation class='point' id='5' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run fontalignment='0' fontcolor='#787878'>Pokemon Subscribers use the service for an average of : </run>
+              <run bold='true' fontalignment='0'>&lt;[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]&gt; Days</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]</field>
+                      </x-fields>
+                      <y-fields>
+                        <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]</field>
+                      </y-fields>
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]</field>
+                      <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>&quot;Pokemon-Go Locations&quot;</value>
+                    <value>1442.8943118716347</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='-26' y='-146' />
+          </annotation>
+          <annotation class='point' id='6' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run fontalignment='0' fontcolor='#787878'>Cool Songs Subscribers use  the service for an average of:  </run>
+              <run bold='true' fontalignment='0'>&lt;[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]&gt; Days</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]</field>
+                      </x-fields>
+                      <y-fields>
+                        <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]</field>
+                      </y-fields>
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]</field>
+                      <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>&quot;Cool Songs&quot;</value>
+                    <value>773.76388624412141</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='92' y='149' />
+          </annotation>
+          <annotation class='point' id='7' mark-position='1' pullback='12' text-width='180'>
+            <formatted-text>
+              <run fontalignment='0' fontcolor='#787878'>Cooking Recipe Subscribes use the service for an Average of : </run>
+              <run bold='true' fontalignment='0'>&lt;[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]&gt; Days</run>
+            </formatted-text>
+            <point>
+              <visual-coordinate class='mark'>
+                <tuple-reference>
+                  <tuple-descriptor>
+                    <pane-descriptor>
+                      <x-fields>
+                        <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]</field>
+                      </x-fields>
+                      <y-fields>
+                        <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]</field>
+                      </y-fields>
+                    </pane-descriptor>
+                    <columns>
+                      <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]</field>
+                      <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]</field>
+                    </columns>
+                  </tuple-descriptor>
+                  <tuple>
+                    <value>&quot;Cooking Recipes&quot;</value>
+                    <value>459.12415780301296</value>
+                  </tuple>
+                </tuple-reference>
+              </visual-coordinate>
+            </point>
+            <body x='32' y='-120' />
+          </annotation>
+        </annotations>
+      </table>
+      <simple-id uuid='{91AEE7C8-C779-41A4-B171-3DC1C6B0323C}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Story 1' type='storyboard'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Engagement Dashboard</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <style>
+        <style-rule element='story-point-caption'>
+          <format attr='width' value='236' />
+        </style-rule>
+      </style>
+      <size sizing-mode='automatic' />
+      <zones>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='99176' id='1' param='vert' removable='false' type='layout-flow' w='99552' x='224' y='412'>
+            <zone fixed-size='187' h='9634' id='4' is-fixed='true' paired-zone-id='5' removable='false' type='flipboard-nav' w='99552' x='224' y='412' />
+            <zone h='89542' id='5' paired-zone-id='4' removable='false' type='flipboard' w='99552' x='224' y='10046'>
+              <flipboard active-id='8' nav-type='caption' show-nav-arrows='true'>
+                <story-points>
+                  <story-point caption='Overall Cancellations are declining, while Active subscriptions are growing.' captured-sheet='Churn Rate' id='1'>
+                    <capturedDeltas>
+                      <worksheet name='Churn Rate'>
+                        <style delta-type='added'>
+                          <style-rule element='axis'>
+                            <encoding attr='space' class='0' field='[federated.0kd4pox0klshrq1b2e97q1029zvp].[cnt:subscription_status:qk]' field-type='quantitative' max='11928' min='-1403' range-type='fixed' scope='rows' type='space' />
+                          </style-rule>
+                        </style>
+                      </worksheet>
+                    </capturedDeltas>
+                  </story-point>
+                  <story-point caption='Forecasting this forward, the active subscribers should continue to increase slightly, while cancellations drop.' captured-sheet='Forecasting' id='2' />
+                  <story-point caption='However, the adoption rate of new unique customers is declining.' captured-sheet='New Customer Intake' id='3' />
+                  <story-point caption='Taking a look at our providers: Provider A transactions are outgrowing provider B &amp;  provider C' captured-sheet='Provider Engagement' id='4' />
+                  <story-point caption='Pokemon Go is outperforming the other services Hyvemobile provides as well.' captured-sheet='Service Engagement' id='5' />
+                  <story-point caption='A deeper look into services illustrates that user retention for Pokemon Go service is nearly triple that of the Cooking Recipe service' captured-sheet='Subscription Length per Service' id='6'>
+                    <capturedDeltas>
+                      <worksheet name='Subscription Length per Service'>
+                        <annotations>
+                          <annotation class='point' delta-type='edited' id='0' mark-position='1' pullback='0' text-width='180'>
+                            <formatted-text>
+                              <run fontcolor='#787878'>Pokemon Subscribers use the service for an average of : </run>
+                              <run bold='true'>&lt;[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]&gt; Days</run>
+                            </formatted-text>
+                            <point>
+                              <visual-coordinate class='axis'>
+                                <x-coord cell-offset='0.510204'>
+                                  <node-reference>
+                                    <fields>
+                                      <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]</field>
+                                    </fields>
+                                    <multibucket>
+                                      <bucket>&quot;Pokemon-Go Locations&quot;</bucket>
+                                    </multibucket>
+                                  </node-reference>
+                                </x-coord>
+                                <y-coord axis-value='1198.9299426562868'>
+                                  <node-reference>
+                                    <axis>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]</axis>
+                                  </node-reference>
+                                </y-coord>
+                                <page-reference />
+                              </visual-coordinate>
+                            </point>
+                            <body x='14' y='-6' />
+                          </annotation>
+                          <annotation class='point' delta-type='edited' id='3' mark-position='1' pullback='0' text-width='180'>
+                            <formatted-text>
+                              <run fontcolor='#787878'>GOT Spoilers Subscribers use the service for an average of : </run>
+                              <run bold='true'>&lt;[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]&gt; Days</run>
+                            </formatted-text>
+                            <point>
+                              <visual-coordinate class='axis'>
+                                <x-coord cell-offset='0.55102'>
+                                  <node-reference>
+                                    <fields>
+                                      <field>[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]</field>
+                                    </fields>
+                                    <multibucket>
+                                      <bucket>&quot;GOT Spoilers&quot;</bucket>
+                                    </multibucket>
+                                  </node-reference>
+                                </x-coord>
+                                <y-coord axis-value='1055.9998466863346'>
+                                  <node-reference>
+                                    <axis>[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]</axis>
+                                  </node-reference>
+                                </y-coord>
+                                <page-reference />
+                              </visual-coordinate>
+                            </point>
+                            <body x='-184' y='-122' />
+                          </annotation>
+                        </annotations>
+                        <style delta-type='added'>
+                          <style-rule element='axis'>
+                            <encoding attr='space' class='0' field='[federated.0kd4pox0klshrq1b2e97q1029zvp].[cum:avg:Calculation_112027041357398022:qk]' field-type='quantitative' max='1500.0' min='0.0' range-type='fixed' scope='rows' type='space' />
+                          </style-rule>
+                        </style>
+                      </worksheet>
+                    </capturedDeltas>
+                  </story-point>
+                  <story-point caption='As charges have increase from 2015 to 2019, it has impacted the subscription duration of subscribers.' captured-sheet='Charges vs Subscriptions days' id='7' />
+                  <story-point caption='But on closer inspection we realize that 2018 and 2019 has yielded higher subscriber turnout - regardless of their shorter subscriber days.\xB;\xB;More subscribers .&#10;Less lengthy subscriptions.&#10;&#10;' captured-sheet='Frequency of subscription days' id='8' />
+                </story-points>
+              </flipboard>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <simple-id uuid='{EC6F84A0-1653-498F-8270-B50F81C8D0B1}' />
+    </dashboard>
+  </dashboards>
+  <windows saved-dpi-scale-factor='1.25' source-height='37'>
+    <window class='worksheet' name='Churn Rate'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='100'>
+            <card param='[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:subscription_status:nk]' type='filter' />
+            <card pane-specification-id='0' param='[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:subscription_status:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{FC009176-72BE-4984-A4E9-CE18A4CEDAAF}' />
+    </window>
+    <window class='worksheet' name='Forecasting'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='100'>
+            <card pane-specification-id='0' param='[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:subscription_status:nk]&#10;[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:Forecast Indicator:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{9A76025D-1059-4D11-BBF9-58774A3A7DB0}' />
+    </window>
+    <window class='worksheet' name='New Customer Intake'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{80C8AAF8-AE53-408F-8806-8090E4AC3112}' />
+    </window>
+    <window class='worksheet' name='Provider Engagement'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:provider:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{0E1C28CF-C4DD-4812-B711-ED617D5DFC44}' />
+    </window>
+    <window class='worksheet' name='Service Engagement'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='1' param='[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{2BA38D19-EB88-4834-BC43-3E416CD51F6F}' />
+    </window>
+    <window class='worksheet' name='Subscription Length per Service'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='2' param='[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:service:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{E8BC4D83-A1D9-4317-B07A-1B31C944394D}' />
+    </window>
+    <window class='worksheet' name='Charges vs Subscriptions days'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date (Subscribers.csv):ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{BEA1C52E-19A9-4863-B6D5-AC05FD96E9FB}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Frequency of subscription days'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:transcationstatus:nk]' type='filter' />
+            <card pane-specification-id='0' param='[federated.0kd4pox0klshrq1b2e97q1029zvp].[yr:transaction_date (Subscribers.csv):ok]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{CBBE47B7-EE68-4DA3-A653-07940452EDB4}' />
+    </window>
+    <window class='worksheet' name='Sheet 9'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='typeinlist' param='[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:user_id (Subscribers.csv):ok]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{664423AA-954C-47EC-AF27-579097A43027}' />
+    </window>
+    <window class='worksheet' name='Sheet 10'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0kd4pox0klshrq1b2e97q1029zvp].[none:transcationstatus:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{DAE360D8-01B9-4D4E-ADB4-0DCBDB47F927}' />
+    </window>
+    <window class='dashboard' name='Story 1'>
+      <viewpoints />
+      <active id='4' />
+      <simple-id uuid='{5432EF79-D7CF-45DC-9132-C9EFCFDB6F2D}' />
+    </window>
+  </windows>
+</workbook>
