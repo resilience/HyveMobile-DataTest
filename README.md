@@ -15,10 +15,10 @@ To run this application you need to replace the redacted google key on line 64 w
 
 The application estimates completion time in the console and handles most errors without needing interaction.
 
-The output is in the form of 
-1. Addresses Storage - to inspect, use as backup, or verify last used file incase of power outage.
-2. Dated Geocode Output - this is the locally stored data.
-3. AWS cloud storage
+The application has 3 outputs:
+1. Addresses Storage file - a backup of the last file loaded in.
+2. Dated Geocode Output file - this is output data stored locally.
+3. AWS cloud storage - the data gets stored in the cloud as it gets processed.
 
 # importTransactions.py 
 
