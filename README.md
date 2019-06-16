@@ -18,6 +18,7 @@ The application estimates completion time in the console and handles most errors
 The output is in the form of 
 1. Addresses Storage - to inspect, use as backup, or verify last used file incase of power outage.
 2. Dated Geocode Output - this is the locally stored data.
+3. AWS cloud storage
 
 # importTransactions.py 
 
