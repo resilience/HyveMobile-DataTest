@@ -25,14 +25,18 @@ grossProfit = 0.70
     # customers who left / customers at start +_ customers who joined
 
 
-c.execute("select YEAR(subscription_end), MONTH(subscription_end), count(subscription_end) from subscribers group by YEAR(subscription_end), MONTH(subscription_end) order by YEAR(subscription_end), MONTH(subscription_end)")
+c.execute("select YEAR(subscription_end), MONTH(subscription_end), count(subscription_end) from subscribers "
+          "group by YEAR(subscription_end), MONTH(subscription_end) "
+          "order by YEAR(subscription_end), MONTH(subscription_end)")
 
 print('Monthly Customers who left')
 print(c.fetchall())
 customersLost = c.fetchall()
 
 c.execute("select YEAR(subscription_start) as subStartYear, MONTH(subscription_start) as subStartMonth, "
-          "count(distinct user_id) from subscribers where subscription_status = 'Active' group by year(subscription_start), month(subscription_start) order by subStartYear, subStartMonth")
+          "count(distinct user_id) from subscribers where subscription_status = 'Active' "
+          "group by year(subscription_start), month(subscription_start) "
+          "order by subStartYear, subStartMonth")
 
 print('Monthly Customers at start + customers who joined ')
 print(c.fetchall())
@@ -45,9 +49,11 @@ customersActive = c.fetchall()
     # Average Monthly Revenue / Subscribers
 
 
-c.execute( " Select YEAR(transaction_date) as SalesYear , month(transaction_date) as SalesMonth,  sum(chargeincents)/count(distinct user_id) as AverageRevenuePerCustomer "
-           "from transactions where transactionstatus = 'Success' group by year(transaction_date),"
-           "month(transaction_date) order by year(transaction_date), MONTH(transaction_date) ")
+c.execute( " Select YEAR(transaction_date) as SalesYear , month(transaction_date) as SalesMonth,  "
+           "sum(chargeincents)/count(distinct user_id) as AverageRevenuePerCustomer "
+           "from transactions where transactionstatus = 'Success' "
+           "group by year(transaction_date), month(transaction_date) "
+           "order by year(transaction_date), MONTH(transaction_date) ")
 
 print('Revenue Data: ')
 ARPU_list = c.fetchall()
