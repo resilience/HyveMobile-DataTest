@@ -69,7 +69,7 @@ c = conn.cursor()
 c.execute("""select * from transactions LIMIT 0""")
 
 print(c.description)
-
+print(c.fetchone())
 
 
 #c.execute('select chargeincents from transactions as charges WHERE transactionstatus = "Success" AND MONTH(transaction_date) = 2 AND YEAR(transaction_date) = 2019 ;')
@@ -77,14 +77,16 @@ print(c.description)
 
 c.execute("select * from subscribers LIMIT 0")
 
-print(c.description)
+
 print(c.fetchone())
+
+
 
 # ------- DROP TABLE -------------
 
 
-c.execute("DROP TABLE IF EXISTS subscribers")
-print('dropped subscribers')
+c.execute("DROP TABLE IF EXISTS transactions")
+print('dropped transactions' )
 
 
 

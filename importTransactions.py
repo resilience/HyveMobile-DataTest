@@ -53,7 +53,7 @@ with open(storage + '.csv', encoding='utf8') as f:
         if k == 1:
             print('headers: ',line)
         else:
-            row = line.translate({ord(c): "" for c in "ï»;^*()[]{};:/<>?\|~½“¯†®©¤;›½®¶´¢”¿¨¤§¥¼;…‹—–ºª¿€™ ¡œ¦«¶æ#$%"})
+            row = line
             # --------------- Separates line into variables to be stored ---------------------
             sep = ','
             transaction_id = row.split(sep, 1)[0]
