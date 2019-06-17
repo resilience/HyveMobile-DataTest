@@ -44,7 +44,6 @@ customersActive = c.fetchall()
 
 
 
-
 # -------------- CALCULATE AVERAGE REVENUE PER CUSTOMER -------------------
     # Average Monthly Revenue / Subscribers
 
@@ -61,11 +60,11 @@ print(ARPU_list)
 row = [item[0] for item in ARPU_list]
 ARPUdates = row
 
-print(ARPUdates)
+print('years: ',ARPUdates)
 row = [item[1] for item in ARPU_list]
 ARPUmonths = row
 
-print(ARPUmonths)
+print('months: ',ARPUmonths)
 
 row = [item[2] for item in ARPU_list]
 ARPUvalues = row
@@ -81,6 +80,8 @@ for RPU in ARPUvalues:
     TLV = float(RPU) * grossProfit / 2.65
     print('TLV: ')
     print(TLV)
+
+
 
 # ----------- Additional
 
@@ -123,7 +124,7 @@ for user in userList:
               )
 
     charges = c.fetchone()
-    print('Charges: ', charges)
+    print('Charges in Cents: ', charges)
 
     charges
 
